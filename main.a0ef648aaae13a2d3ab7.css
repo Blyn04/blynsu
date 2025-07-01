@@ -57,7 +57,7 @@ button {
 .about__heading:before {
   position: absolute;
   content: '';
-  border-bottom: 18px solid #ff4d5a;
+  border-bottom: 18px solid #2b6ABC;
   width: 16rem;
   display: block;
   margin: 0 auto;
@@ -69,7 +69,7 @@ button {
 
 @media (max-width: 770px) {
   .about__heading:before {
-    border-bottom: 14px solid #ff4d5a;
+    border-bottom: 14px solid #2b6ABC;
   }
 }
 
@@ -188,7 +188,7 @@ button {
   border-width: 3px;
   background-image:
     linear-gradient(#1a1a1a, #1a1a1a),
-    radial-gradient(circle at top left, #51a2e9, #ff4d5a);
+    radial-gradient(circle at top left, #2b6ABC, #E18AAA);
   border-radius: 10px;
   background-origin: border-box;
   background-clip: content-box, border-box;
@@ -366,7 +366,7 @@ button {
 .contact__heading:before {
   position: absolute;
   content: '';
-  border-bottom: 18px solid #ff4d5a;
+  border-bottom: 18px solid #2b6ABC;
   width: 21rem;
   display: block;
   margin: 0 auto;
@@ -378,7 +378,7 @@ button {
 
 @media (max-width: 770px) {
   .contact__heading:before {
-    border-bottom: 14px solid #ff4d5a;
+    border-bottom: 14px solid #2b6ABC;
   }
 }
 
@@ -427,7 +427,7 @@ button {
 .contact__form-submit:after {
   position: absolute;
   content: '';
-  border-bottom: 2px solid #ff4d5a;
+  border-bottom: 2px solid #2b6ABC;
   width: calc(100% + 2rem);
   left: -14%;
   top: 0.5rem;
@@ -530,7 +530,7 @@ button {
 }
 
 .input-error {
-  border-left: 2px solid #ff4d5a !important;
+  border-left: 2px solid #2b6ABC !important;
 }
 
 .footer {
@@ -592,7 +592,7 @@ button {
   left: 0;
   right: 0;
   text-align: center;
-  background-color: #ff4d5a;
+  background-color: #2b6ABC;
   -webkit-animation-duration: 1s;
   animation-duration: 1s;
   -webkit-animation-fill-mode: both;
@@ -660,7 +660,7 @@ button {
 }
 
 .heading__line-1 span {
-  color: #ff4d5a;
+  color: #2b6ABC;
   font-weight: 400;
 }
 
@@ -702,9 +702,9 @@ button {
   width: 27.5rem;
   height: 4.8rem;
   background-color: rgba(26, 26, 26, 0.6);
-  border: 2px solid #ff4d5a;
+  border: 2px solid #2b6ABC;
   border-radius: 2px;
-  color: #ff4d5a;
+  color: #2b6ABC;
   font-size: 2.4rem;
   font-weight: 500;
   cursor: pointer;
@@ -740,7 +740,7 @@ button {
   width: 27.5rem;
   height: 4.8rem;
   border-radius: 3px;
-  border: 2px solid #ff4d5a;
+  border: 2px solid #2b6ABC;
   filter: blur(0);
   transform-origin: 50%;
   z-index: -1;
@@ -788,7 +788,7 @@ button {
   width: 24px;
   margin-left: 15px;
   transform: rotate(90deg);
-  fill: #ff4d5a;
+  fill: #2b6ABC;
   transition: all 0.3s;
 }
 
@@ -869,11 +869,11 @@ button {
 }
 
 .navigation__item--active {
-  color: #ff4d5a;
+  color: #2b6ABC;
 }
 
 .navigation__item:hover {
-  color: #ff4d5a;
+  color: #2b6ABC;
 }
 
 .projects {
@@ -886,7 +886,7 @@ button {
 .projects__heading:before {
   position: absolute;
   content: '';
-  border-bottom: 18px solid #ff4d5a;
+  border-bottom: 18px solid #2b6ABC;
   width: 22.5rem;
   display: block;
   margin: 0 auto;
@@ -898,7 +898,7 @@ button {
 
 @media (max-width: 770px) {
   .projects__heading:before {
-    border-bottom: 14px solid #ff4d5a;
+    border-bottom: 14px solid #2b6ABC;
   }
 }
 
@@ -1099,7 +1099,7 @@ button {
 .project__code:after {
   position: absolute;
   content: '';
-  border-bottom: 2px solid #ff4d5a;
+  border-bottom: 2px solid #2b6ABC;
   width: calc(100% + 2rem);
   left: -10%;
   top: 0.5rem;
