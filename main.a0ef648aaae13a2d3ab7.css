@@ -57,7 +57,7 @@ button {
 .about__heading:before {
   position: absolute;
   content: '';
-  border-bottom: 18px solid #2b6ABC;
+  border-bottom: 18px solid #bc2b3e;
   width: 16rem;
   display: block;
   margin: 0 auto;
