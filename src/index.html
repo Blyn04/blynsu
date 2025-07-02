@@ -16,7 +16,7 @@
   <body>
     <!-- Hero Section -->
     <div class="hero" id="hero">
-      <%= htmlWebpackPlugin.tags.bodyTags %>
+      <!-- <%= htmlWebpackPlugin.tags.bodyTags %> -->
       <div class="canvas">
         <canvas class="connecting-dots"></canvas>
       </div>
@@ -472,5 +472,23 @@
         </div>
         </a>
     </footer>
+
+<script>
+  const blurb = document.querySelector(".profile__blurb");
+  const defaultText = blurb.textContent;
+  const images = document.querySelectorAll(".profile__picture img");
+
+  images.forEach((img) => {
+    img.addEventListener("mouseenter", () => {
+      const newText = img.getAttribute("data-text");
+      if (newText) blurb.textContent = newText;
+    });
+
+    img.addEventListener("mouseleave", () => {
+      blurb.textContent = defaultText;
+    });
+  });
+</script>
+
   </body>
 </html>

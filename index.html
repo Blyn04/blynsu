@@ -7,11 +7,15 @@
     <link rel="icon" href="fav.png" />
     <script defer src="./src/script.js"></script>
     <link href="./src/styles.css" rel="stylesheet" />
-  </head>
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet"> -->
 
+    <%= htmlWebpackPlugin.tags.headTags %>
+  </head>
   <body>
     <!-- Hero Section -->
     <div class="hero" id="hero">
+      <!-- <%= htmlWebpackPlugin.tags.bodyTags %> -->
       <div class="canvas">
         <canvas class="connecting-dots"></canvas>
       </div>
@@ -19,7 +23,7 @@
         <div class="heading__line-1">
           Hello, I'm <span>Berlene</span>.
         </div>
-        
+
         <div class="heading__line-2">
           Backend-leaning Full Stack Developer.
         </div>
