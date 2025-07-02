@@ -363,7 +363,8 @@
       </div>
 
     </section>
-    <section class="contact" id="contact">
+    
+    <!-- <section class="contact" id="contact">
       <h2 class="contact__heading section-heading">Contact</h2>
       <p class="contact__text">Have a question or want to work together? Leave your details and I'll get back to you as soon as possible.</p>
 
@@ -431,24 +432,86 @@
 											<p>https://github.com/Blyn04</p>
 										</div>
 									</div>
-								</div><!--/.contact-adress-->
+								</div>
 
 								<div class="hm-foot-icon">
 									<ul>
-										<li><a href="#"><i class="fa fa-facebook"></i></a></li><!--/li-->
-										<li><a href="#"><i class="fa fa-dribbble"></i></a></li><!--/li-->
-										<li><a href="#"><i class="fa fa-twitter"></i></a></li><!--/li-->
-										<li><a href="#"><i class="fa fa-linkedin"></i></a></li><!--/li-->
-										<li><a href="#"><i class="fa fa-instagram"></i></a></li><!--/li-->
-									</ul><!--/ul-->
-								</div><!--/.hm-foot-icon-->
-							</div><!--/.single-contact-box-->
-						</div><!--/.col-->
-					</div><!--/.row-->
-				</div><!--/.contact-content-->
+										<li><a href="#"><i class="fa fa-facebook"></i></a></li>
+										<li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+										<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+										<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+										<li><a href="#"><i class="fa fa-instagram"></i></a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
-      
+    </section> -->
+
+    <section class="contact" id="contact">
+        <!-- Flex container -->
+      <h2 class="contact__heading section-heading">Contact</h2>
+      <p class="contact__text">Have a question or want to work together? Leave your details and I'll get back to you as soon as possible.</p>
+
+      <div class="contact__flex-container">
+        <!-- Form -->
+        <form
+          class="contact__form"
+          action="https://formspree.io/f/xdoprgpv"
+          method="POST"
+        >
+          <input
+            class="contact__form-name"
+            type="text"
+            name="name"
+            placeholder="Name"
+          />
+          <input
+            class="contact__form-email"
+            type="email"
+            name="_replyto"
+            placeholder="Email"
+          />
+          <textarea
+            class="contact__form-message"
+            name="message"
+            placeholder="Message"
+          ></textarea>
+
+          <div class="contact__form-error-submit">
+            <div class="form-error">
+              <div class="form-error__name">Please enter your name.</div>
+              <div class="form-error__email">Please enter a valid email.</div>
+              <div class="form-error__msg">Please enter a message.</div>
+            </div>
+            <button type="submit" class="contact__form-submit project__live-2" id="form-submit">Submit</button>
+          </div>
+        </form>
+
+        <!-- Info -->
+        <div class="contact__info-box">
+          <h3>Berlene Bernabe</h3>
+          <p>Web and Mobile Developer</p>
+
+          <div class="contact__info-detail">
+            <div><strong>Phone:</strong> +639471745438</div>
+            <div><strong>Email:</strong> <a href="mailto:berlenebernabe12@gmail.com">berlenebernabe12@gmail.com</a></div>
+            <div><strong>GitHub:</strong> <a href="https://github.com/Blyn04" target="_blank">github.com/Blyn04</a></div>
+          </div>
+
+          <div class="contact__icons">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-dribbble"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+      </div>
     </section>
+    
     <footer class="footer">
       <a href="#hero">
         <div class="return-home">
@@ -459,12 +522,12 @@
         </div>
       </a>
       <div class="socials">
-        <a href="https://github.com/bscottnz" target="_blank"> 
+        <a href="https://github.com/Blyn04" target="_blank"> 
           <div class="socials__github">
             <img src="./src/assets/github-logo.png" alt="" />
           </div>
         </a>
-        <a href="mailto:blscott@gmail.com" target="_blank">
+        <a href="mailto:berlenebernabe12@gmail.com" target="_blank">
           <div class="socials__email">
             <img src="./src/assets/mail.png" alt="" />
           </div>
