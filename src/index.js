@@ -1,4 +1,5 @@
-import './sass/main.scss';
+// import './sass/main.scss';
+import './styles.css';
 import canvasDots from './heroCanvas.js';
 import canvasDotsBg from './bgCanvas.js';
 import { doc } from 'prettier';
