@@ -1390,3 +1390,127 @@ body {
   background-color: #1a1a1a;
 }
 
+/* 
+.profile__picture {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: translateY(-50px);
+}
+
+.slider {
+  position: relative;
+  width: 350px;
+  perspective: 1000px;
+  margin-top: -120px;
+}
+
+.rotator {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 55%;
+  height: 150px;
+  transform-style: preserve-3d;
+  animation: roter 29s linear infinite;
+}
+
+.items {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  border: 2px solid transparent;
+  border-radius: 17px;
+}
+
+.items img {
+  height: 100%;
+  width: 100%;
+  transition: all 3s ease;
+}
+
+.items:hover img {
+  transform: scale(1.1);
+}
+
+@keyframes roter {
+  from {
+    transform: rotateY(0deg);
+  }
+  to {
+    transform: rotateY(360deg);
+  }
+}
+
+.items:nth-child(1) {
+  transform: rotateY(40deg) translateZ(300px);
+}
+.items:nth-child(2) {
+  transform: rotateY(80deg) translateZ(300px);
+}
+.items:nth-child(3) {
+  transform: rotateY(120deg) translateZ(300px);
+}
+.items:nth-child(4) {
+  transform: rotateY(160deg) translateZ(300px);
+}
+.items:nth-child(5) {
+  transform: rotateY(200deg) translateZ(300px);
+}
+.items:nth-child(6) {
+  transform: rotateY(240deg) translateZ(300px);
+}
+.items:nth-child(7) {
+  transform: rotateY(280deg) translateZ(300px);
+}
+.items:nth-child(8) {
+  transform: rotateY(320deg) translateZ(300px);
+}
+.items:nth-child(9) {
+  transform: rotateY(360deg) translateZ(300px);
+}
+
+.rotator:hover {
+  animation-play-state: paused;
+} */
+
+.image-path-curve p {
+  height: 200px;
+  width: 500px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.image-path-curve img {
+  height: 100px;
+  position: absolute;
+  left: 0;
+  offset-path: path('m 0 50 q 50-30 100-30 t 100 30 100 0 100-30 100 30');
+  box-shadow: 1px 1px 3px #0008;
+  transition: transform .4s ease-out, offset-path .4s cubic-bezier(.77,-1.17,.75,.84),box-shadow .3s, z-index .3s;
+  z-index: 0;
+}
+
+.image-path-curve img:hover {
+  transform: scale(3);
+  offset-path: path('m 5 65 q 45-0 90-0 t 90 0 90 0 90-0 90 0');
+  box-shadow: 3px 4px 10px #0006;
+  z-index: 999;
+}
+
+/* For 4 images (adjust if you change the count) */
+.image-path-curve img:nth-last-child(4):first-child {
+  offset-distance: 10%;
+}
+.image-path-curve img:nth-last-child(3):nth-child(2) {
+  offset-distance: 35%;
+}
+.image-path-curve img:nth-last-child(2):nth-child(3) {
+  offset-distance: 65%;
+}
+.image-path-curve img:last-child:nth-child(4) {
+  offset-distance: 90%;
+}
+
