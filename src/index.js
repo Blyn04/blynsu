@@ -2,6 +2,7 @@ import './sass/main.scss';
 import canvasDots from './heroCanvas.js';
 import canvasDotsBg from './bgCanvas.js';
 import { doc } from 'prettier';
+import './styles.css';
 
 window.onload = function () {
   canvasDotsBg();
