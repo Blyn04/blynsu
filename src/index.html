@@ -5,18 +5,13 @@
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>Blyn</title>
     <link rel="icon" href="fav.png" />
-    <!-- <script defer src="./src/script.js"></script> -->
-    <!-- <link rel="stylesheet" href="styles.css" /> -->
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-    <%= htmlWebpackPlugin.tags.headTags %>
+    <script defer src="./src/script.js"></script>
+    <link href="./src/styles.css" rel="stylesheet" />
   </head>
+
   <body>
     <!-- Hero Section -->
     <div class="hero" id="hero">
-      <%= htmlWebpackPlugin.tags.bodyTags %>
       <div class="canvas">
         <canvas class="connecting-dots"></canvas>
       </div>
@@ -24,7 +19,7 @@
         <div class="heading__line-1">
           Hello, I'm <span>Berlene</span>.
         </div>
-
+        
         <div class="heading__line-2">
           Backend-leaning Full Stack Developer.
         </div>
@@ -60,7 +55,7 @@
 
       <div class="about__content">
         <div class="profile">
-          <div class="profile__picture">
+          <!-- <div class="profile__picture">
             <svg
               version="1.1"
               id="Capa_1"
@@ -115,11 +110,98 @@
                 </linearGradient>
               </defs>
             </svg>
-            <!-- <img src="./assets/propic.png" alt="" /> -->
-          </div>
-          <p class="profile__blurb">
+          </div> -->
+
+          <!-- <div class="profile__picture">
+  <div class="slider">
+    <div class="rotator">
+      <div class="items">
+        <img src="https://images.pexels.com/photos/3998365/pexels-photo-3998365.png?auto=compress&cs=tinysrgb&w=600" alt="items photo" />
+      </div>
+      <div class="items">
+        <img src="https://images.pexels.com/photos/189349/pexels-photo-189349.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" />
+      </div>
+      <div class="items">
+        <img src="https://images.pexels.com/photos/36717/amazing-animal-beautiful-beautifull.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="items photo" />
+      </div>
+      <div class="items">
+        <img src="https://images.pexels.com/photos/248159/pexels-photo-248159.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="items photo" />
+      </div>
+      <div class="items">
+        <img src="https://images.pexels.com/photos/206359/pexels-photo-206359.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" />
+      </div>
+      <div class="items">
+        <img src="https://images.pexels.com/photos/33545/sunrise-phu-quoc-island-ocean.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="items photo" />
+      </div>
+      <div class="items">
+        <img src="https://images.pexels.com/photos/417074/pexels-photo-417074.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="items photo" />
+      </div>
+      <div class="items">
+        <img src="https://images.pexels.com/photos/11586435/pexels-photo-11586435.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="items photo" />
+      </div>
+      <div class="items">
+        <img src="https://images.pexels.com/photos/533667/pexels-photo-533667.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load" alt="items photo" />
+      </div>
+    </div>
+  </div>
+</div> -->
+
+<!-- <div class="profile__picture image-path-curve">
+  <p>
+    <img src="https://images.pexels.com/photos/3998365/pexels-photo-3998365.png?auto=compress&cs=tinysrgb&w=600" />
+    <img src="https://images.pexels.com/photos/3618162/pexels-photo-3618162.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" />
+    <img src="https://images.pexels.com/photos/1475248/pexels-photo-1475248.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" />
+    <img src="https://images.pexels.com/photos/494014/pexels-photo-494014.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" />
+  </p>
+</div> -->
+
+<div class="profile__picture image-path-curve">
+  <p>
+    <img
+      src="https://images.pexels.com/photos/3998365/pexels-photo-3998365.png?auto=compress&cs=tinysrgb&w=600"
+      data-text="Loves working with frontend technologies like React and Vue." />
+    <img
+      src="https://images.pexels.com/photos/3618162/pexels-photo-3618162.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+      data-text="Enjoys solving UI/UX challenges and building mobile apps." />
+    <img
+      src="https://images.pexels.com/photos/1475248/pexels-photo-1475248.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+      data-text="Has experience in backend systems and Firebase." />
+    <img
+      src="https://images.pexels.com/photos/494014/pexels-photo-494014.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+      data-text="Currently exploring machine learning and cloud computing." />
+  </p>
+</div>
+
+<p class="profile__blurb">
+  4th-year Bachelor of Science in Information Technology student, specializing in Web and Mobile Application Development.
+</p>
+
+
+          <!-- <p class="profile__blurb">
            4th-year Bachelor of Science in Information Technology student, specializing in Web and Mobile Application Development.
-          </p>
+          </p> -->
+
+<!-- <div class="profile__picture image-path-curve">
+  <p class="profile__blurb">
+    4th-year Bachelor of Science in Information Technology student, specializing in Web and Mobile Application Development.
+  </p>
+
+  <p>
+    <img
+      src="https://images.pexels.com/photos/3998365/pexels-photo-3998365.png?auto=compress&cs=tinysrgb&w=600"
+      data-text="Loves working with frontend technologies like React and Vue." />
+    <img
+      src="https://images.pexels.com/photos/3618162/pexels-photo-3618162.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+      data-text="Enjoys solving UI/UX challenges and building mobile apps." />
+    <img
+      src="https://images.pexels.com/photos/1475248/pexels-photo-1475248.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+      data-text="Has experience in backend systems and Firebase." />
+    <img
+      src="https://images.pexels.com/photos/494014/pexels-photo-494014.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+      data-text="Currently exploring machine learning and cloud computing." />
+  </p>
+</div> -->
+
         </div>
         <!-- <h2 class="about__heading">Skills & technologies</h2> -->
         <div class="skills">
@@ -130,63 +212,63 @@
           </div> -->
           <div class="skills__row">
             <div class="skills__item skills__item--html">
-              <img src="./assets/html.png" alt="" />
+              <img src="./src/assets/html.png" alt="" />
               <div class="skills__item-name">HTML</div>
             </div>
 
             <div class="skills__item skills__item--react">
-              <img src="./assets/react.png" alt="" />
+              <img src="./src/assets/react.png" alt="" />
               <div class="skills__item-name">REACT</div>
             </div>
 
             <div class="skills__item skills__item--npm">
-              <img src="./assets/express.png" alt="" />
+              <img src="./src/assets/express.png" alt="" />
               <div class="skills__item-name">EXPRESS.JS</div>
             </div>
           </div>
 
           <div class="skills__row">
             <div class="skills__item skills__item--js">
-              <img src="./assets/js.png" alt="" />
+              <img src="./src/assets/js.png" alt="" />
               <div class="skills__item-name">JAVASCRIPT</div>
             </div>
 
             <div class="skills__item skills__item--css">
-              <img src="./assets/css.png" alt="" />
+              <img src="./src/assets/css.png" alt="" />
               <div class="skills__item-name">CSS</div>
             </div>
 
             <div class="skills__item skills__item--python">
-              <img src="./assets/mongo.png" alt="" />
+              <img src="./src/assets/mongo.png" alt="" />
               <div class="skills__item-name">MONGODB</div>
             </div>
 
             <div class="skills__item skills__item--git">
-              <img src="./assets/git.png" alt="" />
+              <img src="./src/assets/git.png" alt="" />
               <div class="skills__item-name">GIT</div>
             </div>
           </div>
 
           <div class="skills__row">
             <div class="skills__item skills__item--sass">
-              <img src="./assets/sass.png" alt="" />
+              <img src="./src/assets/sass.png" alt="" />
               <div class="skills__item-name">FIREBASE</div>
             </div>
 
             <div class="skills__item skills__item--webpack">
-              <img src="./assets/nextjs.png" alt="" />
+              <img src="./src/assets/nextjs.png" alt="" />
               <div class="skills__item-name">MYSQL</div>
             </div>
 
             <div class="skills__item skills__item--r">
-              <img src="./assets/node.png" alt="" />
+              <img src="./src/assets/node.png" alt="" />
               <div class="skills__item-name">NODE.JS</div>
             </div>
           </div>
 
           <div class="skills__row">
             <div class="skills__item skills__item--git">
-              <img src="./assets/git.png" alt="" />
+              <img src="./src/assets/git.png" alt="" />
 			  <div class="skills__item-name">JAVA</div>
             </div>
           </div>
@@ -200,7 +282,7 @@
         <a href="https://lifeinvadersocial.herokuapp.com/" target="_blank">
           <div class="project__image-container weather">
             <div class="project__image-image">
-              <img src="./assets/nuls.png" alt="" />
+              <img src="./src/assets/nuls.png" alt="" />
             </div>
           </div>
         </a>
@@ -375,15 +457,33 @@
       <div class="socials">
         <a href="https://github.com/bscottnz" target="_blank"> 
           <div class="socials__github">
-            <img src="./assets/github-logo.png" alt="" />
+            <img src="./src/assets/github-logo.png" alt="" />
           </div>
         </a>
         <a href="mailto:blscott@gmail.com" target="_blank">
           <div class="socials__email">
-            <img src="./assets/mail.png" alt="" />
+            <img src="./src/assets/mail.png" alt="" />
           </div>
         </div>
         </a>
     </footer>
+
+<script>
+  const blurb = document.querySelector(".profile__blurb");
+  const defaultText = blurb.textContent;
+  const images = document.querySelectorAll(".profile__picture img");
+
+  images.forEach((img) => {
+    img.addEventListener("mouseenter", () => {
+      const newText = img.getAttribute("data-text");
+      if (newText) blurb.textContent = newText;
+    });
+
+    img.addEventListener("mouseleave", () => {
+      blurb.textContent = defaultText;
+    });
+  });
+</script>
+
   </body>
 </html>
