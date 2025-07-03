@@ -124,6 +124,7 @@ button {
   font-size: 1.8rem;
   width: 500px;
   line-height: 1.8;
+  margin-top: 70px;
 }
 
 @media (max-width: 600px) {
@@ -175,6 +176,7 @@ button {
 
 .skills__item {
   opacity: 0;
+  transform: translateY(20px); 
   position: relative;
   display: flex;
   flex-direction: column;
@@ -191,8 +193,14 @@ button {
   border-radius: 10px;
   background-origin: border-box;
   background-clip: content-box, border-box;
-  transition: transform 0.2s, opacity 1.2s;
+  /* transition: transform 0.2s, opacity 1.2s; */
+  transition: transform 1.5s ease, opacity 1.5s ease;
   overflow: hidden;
+}
+
+.skills__item-fade-in {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 @media (max-width: 1500px) {
@@ -1495,7 +1503,7 @@ body {
 
 .image-path-curve p {
   height: 200px;
-  width: 500px;
+  width: 600px; /* slightly wider for 5 images */
   margin: 0 auto;
   position: relative;
 }
@@ -1506,29 +1514,35 @@ body {
   left: 0;
   offset-path: path('m 0 50 q 50-30 100-30 t 100 30 100 0 100-30 100 30');
   box-shadow: 1px 1px 3px #0008;
-  transition: transform .4s ease-out, offset-path .4s cubic-bezier(.77,-1.17,.75,.84),box-shadow .3s, z-index .3s;
+  transition: transform 0.4s ease-out,
+              offset-path 0.4s cubic-bezier(0.77,-1.17,0.75,0.84),
+              box-shadow 0.3s,
+              z-index 0.3s;
   z-index: 0;
 }
 
 .image-path-curve img:hover {
-  transform: scale(3);
+  transform: scale(4);
   offset-path: path('m 5 65 q 45-0 90-0 t 90 0 90 0 90-0 90 0');
   box-shadow: 3px 4px 10px #0006;
   z-index: 999;
 }
 
-/* For 4 images (adjust if you change the count) */
-.image-path-curve img:nth-last-child(4):first-child {
-  offset-distance: 10%;
+/* For 5 images */
+.image-path-curve img:nth-child(1) {
+  offset-distance: 5%;
 }
-.image-path-curve img:nth-last-child(3):nth-child(2) {
-  offset-distance: 35%;
+.image-path-curve img:nth-child(2) {
+  offset-distance: 27%;
 }
-.image-path-curve img:nth-last-child(2):nth-child(3) {
-  offset-distance: 65%;
+.image-path-curve img:nth-child(3) {
+  offset-distance: 50%;
 }
-.image-path-curve img:last-child:nth-child(4) {
-  offset-distance: 90%;
+.image-path-curve img:nth-child(4) {
+  offset-distance: 73%;
+}
+.image-path-curve img:nth-child(5) {
+  offset-distance: 95%;
 }
 
 /* Existing contact styles remain unchanged */
