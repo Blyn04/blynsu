@@ -177,17 +177,17 @@
   </p>
 </div> -->
 
-<div class="profile__picture image-path-curve">
-  <p>
+<!-- <div class="profile__picture image-path-curve">
+.  <p>
     <img
       src="./assets/img1.jpg"
-      data-text="Loves working with frontend technologies like React and Vue." />
+      data-text="My foot got cramped. Is it because I sat too long in the computer lab?" />
     <img
       src="./assets/img2.jpg"
-      data-text="Enjoys solving UI/UX challenges and building mobile apps." />
+      data-text="Testing the Application before presenting at the UMAK IT Olympics." />
     <img
       src="./assets/img3.jpg"
-      data-text="Has experience in backend systems and Firebase." />
+      data-text="JPCS - NU MOA Chapter (L-R): President, VP-External, VP-Internal" />
     <img
       src="./assets/img4.jpg"
       data-text="Currently exploring machine learning and cloud computing." />
@@ -199,6 +199,23 @@
 
 <p class="profile__blurb">
   4th-year Bachelor of Science in Information Technology student, specializing in Web and Mobile Application Development.
+</p> -->
+
+<div class="profile__picture image-grid">
+  <img src="./assets/img1.jpg" data-text="My foot got cramped. Is it because I sat too long in the computer lab?" />
+  <img src="./assets/img2.jpg" data-text="Testing the Application before presenting at the UMAK IT Olympics." />
+  <img src="./assets/img3.jpg" data-text="JPCS - NU MOA Chapter (L-R)\nPresident, VP-External, VP-Internal (me)" />
+  <img src="./assets/img4.jpg" data-text="Going to UP Diliman for collaboration with UP Spark." />
+  <img src="./assets/img5.jpg" data-text="Went to IoT Conference 2024." />
+  <img src="./assets/img6.jpg" data-text="#LeadershipBeyondCourage\nThe 𝐒𝐭𝐚𝐭𝐞 𝐨𝐟 𝐭𝐡𝐞 𝐍𝐚𝐭𝐢𝐨𝐧𝐚𝐥𝐢𝐚𝐧 𝐀𝐝𝐝𝐫𝐞𝐬𝐬 𝟐𝟎𝟐𝟒" />
+  <img src="./assets/img10.jpg" data-text="Helping with technical stuff." />
+  <img src="./assets/cats.jpg" data-text="I like cats." />
+  <img src="./assets/games.jpg" data-text="I like gaming." />
+  <img src="./assets/lightnovels.png" data-text="I like reading light novels and books." />
+</div>
+
+<p class="profile__blurb" id="profileBlurb">
+  4th-year Bachelor of Science in Information Technology student at the National University – MOA, specializing in Web and Mobile Application Development.
 </p>
 
 
@@ -571,7 +588,7 @@
         </a>
     </footer>
 
-<script>
+<!-- <script>
   const blurb = document.querySelector(".profile__blurb");
   const defaultText = blurb.textContent;
   const images = document.querySelectorAll(".profile__picture img");
@@ -586,6 +603,54 @@
       blurb.textContent = defaultText;
     });
   });
+</script> -->
+
+<script>
+  const blurb = document.getElementById("profileBlurb") || document.querySelector(".profile__blurb");
+  const defaultText = blurb.innerHTML; 
+  const images = document.querySelectorAll(".profile__picture img");
+
+  images.forEach((img, index) => {
+    img.addEventListener("mouseenter", () => {
+      // Replace \n with <br> for multi-line display
+      const newText = img.getAttribute("data-text");
+      if (newText) {
+        const formattedText = newText.replace(/\\n/g, "<br>");
+        blurb.innerHTML = formattedText;
+      }
+
+      // Adjust margin-top based on image index (0-based)
+      if (index >= 5) {
+        blurb.style.marginTop = "250px"; // img6–10
+      } else {
+        blurb.style.marginTop = "150px"; // img1–5
+      }
+    });
+
+    img.addEventListener("mouseleave", () => {
+      blurb.innerHTML = defaultText;
+      blurb.style.marginTop = "140px"; // Reset to default
+    });
+  });
+</script>
+
+<script>
+  const items = document.querySelectorAll('.skills__item');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, index) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => {
+          entry.target.classList.add('skills__item-fade-in');
+        }, index * 200); // delay increases per item
+        observer.unobserve(entry.target); // unobserve after animation
+      }
+    });
+  }, {
+    threshold: 0.3,
+  });
+
+  items.forEach(item => observer.observe(item));
 </script>
 
   </body>
