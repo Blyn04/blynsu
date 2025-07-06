@@ -596,7 +596,8 @@ button {
 }
 
 .socials__github,
-.socials__email {
+.socials__email,
+.socials__linkedin {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -607,7 +608,8 @@ button {
 }
 
 .socials__github:hover,
-.socials__email:hover {
+.socials__email:hover,
+.socials__linkedin:hover {
   transform: scale(1.2);
 }
 
@@ -619,8 +621,18 @@ button {
   margin-left: 1rem;
 }
 
+.socials__linkedin {
+  margin-left: 1rem;
+}
+
 .socials img {
   height: 100%;
+}
+
+.socials__linkedin img {
+  width: 41px;
+  height: 41px;
+  margin-left: 5px;
 }
 
 .copyright {
@@ -1809,3 +1821,4 @@ body {
 .contact__icons a:hover {
   color: #ffffff;
 }
+
