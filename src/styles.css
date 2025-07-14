@@ -1890,19 +1890,20 @@ body {
   animation-play-state: paused;
 }
 
-/* .projects__heading {
+.projects__heading {
   padding-bottom: 0;
-  margin-bottom: 1.5rem; 
+  margin-bottom: 1.5rem;
 }
 
 .projects {
-  margin-bottom: 10rem; 
-} */
+  margin-bottom: 10rem;
+}
 
 .container {
   display: flex;
   width: 90vw;
-  margin: 1.5rem auto 0 auto; /* reduced top margin */
+  margin: 1.5rem auto 0 auto;
+  gap: 20px;
 }
 
 .panel {
@@ -1914,18 +1915,30 @@ body {
   color: #fff;
   cursor: pointer;
   flex: 0.5;
-  margin: 10px;
+  margin: 10px 0;
   position: relative;
   transition: all 700ms ease-in;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  overflow: hidden;
 }
 
 .panel h3 {
   font-size: 24px;
-  position: absolute;
-  bottom: 20px;
-  left: 20px;
-  margin: 0;
+  margin: 20px;
+  position: relative;
+  z-index: 1;
   opacity: 0;
+  transition: opacity 0.3s ease-in 0.4s;
+}
+
+.panel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  border-radius: 30px;
 }
 
 .panel.active {
@@ -1934,7 +1947,75 @@ body {
 
 .panel.active h3 {
   opacity: 1;
-  transition: opacity 0.3s ease-in 0.4s;
+}
+
+.panel__content {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  z-index: 1;
+  color: #2b6ABC;
+  text-shadow: 0 0 4px white;
+}
+
+.panel__content h3 {
+  font-size: 24px;
+  margin: 0;
+  color: #000000;
+}
+
+.panel__content p {
+  margin-top: 5px;
+  font-size: 0.95rem;
+  max-width: 250px;
+  line-height: 1.3;
+  color: #000000;
+}
+
+.panel__content p {
+  display: none;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.panel.active .panel__content p {
+  display: block;
+  opacity: 1;
+}
+
+.panel__card {
+  background: rgba(255, 255, 255, 0.9);
+  color: #020202;
+  padding: 1rem;
+  border-radius: 15px;
+  max-width: 280px;
+  margin: 1.5rem;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+  opacity: 0;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  transform: translateY(10px);
+  backdrop-filter: blur(4px);
+}
+
+.panel.active .panel__card {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.panel__card h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1.25rem;
+}
+
+.panel__card p {
+  margin: 0.25rem 0;
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+.panel__card a {
+  color: #000000;
+  text-decoration: underline;
 }
 
 @media (max-width: 768px) {
@@ -1954,6 +2035,46 @@ body {
   }
 }
 
+/* 
 .projects__heading {
   padding-bottom: 10rem;
 }
+
+.items {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  color: #fff;
+  padding: 0 1rem;
+  width: 300px;
+  min-height: 800px; 
+  box-sizing: border-box;
+}
+
+.items img {
+  height: 200px;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 17px;
+  transition: all 0.5s ease;
+}
+
+.item-info {
+  margin-top: 0.75rem;
+  padding: 0 0.5rem;
+  width: 100%;
+}
+
+.item-info h3 {
+  font-size: 1rem;
+  margin: 0.25rem 0;
+}
+
+.item-info p {
+  font-size: 0.85rem;
+  color: #ddd;
+  margin: 0;
+  line-height: 1.3;
+  word-wrap: break-word;
+} */
