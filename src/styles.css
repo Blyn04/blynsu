@@ -1890,14 +1890,14 @@ body {
   animation-play-state: paused;
 }
 
-.projects__heading {
+/* .projects__heading {
   padding-bottom: 0;
-  margin-bottom: 1.5rem; /* Add this instead */
+  margin-bottom: 1.5rem; 
 }
 
 .projects {
   margin-bottom: 10rem; 
-}
+} */
 
 .container {
   display: flex;
@@ -1952,4 +1952,8 @@ body {
   .panel.active {
     flex: 1 !important;
   }
+}
+
+.projects__heading {
+  padding-bottom: 10rem;
 }
