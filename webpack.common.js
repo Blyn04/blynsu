@@ -34,8 +34,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 
 module.exports = {
-  mode: 'production', // or 'development'
-  entry: './src/index.js', // ✅ keep pointing to src/index.js
+  mode: 'production',
+  entry: './src/index.js',
   output: {
     filename: 'bundle.[contenthash].js',
     path: path.resolve(__dirname, 'dist'),
@@ -43,26 +43,28 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: './index.html', // ✅ uses index.html from root
+      template: './index.html', // ✅ root-level index.html is fine
       favicon: './src/assets/fav.png',
     }),
   ],
   module: {
     rules: [
+      // ✅ REMOVE THIS unless you use <%- require() %> in .html
+      // {
+      //   test: /\.html$/,
+      //   use: ['html-loader'],
+      // },
       {
-        test: /\.html$/,
-        use: ['html-loader'],
+        test: /\.css$/i,
+        use: ['style-loader', 'css-loader'],
       },
       {
         test: /\.(svg|png|jpg|jpeg|gif)$/i,
-        type: 'asset/resource', // ✅ better than file-loader in Webpack 5
+        type: 'asset/resource',
         generator: {
           filename: 'imgs/[name].[hash][ext]',
         },
       },
     ],
-  },
-  resolve: {
-    extensions: ['.js'],
   },
 };
