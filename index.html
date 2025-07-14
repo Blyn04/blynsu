@@ -310,7 +310,7 @@
       </div>
     </section>
     
-    <section class="projects" id="projects">
+    <!-- <section class="projects" id="projects">
       <h2 class="projects__heading section-heading">Projects</h2>
 
       <div class="project project-left">
@@ -341,12 +341,12 @@
             Studdy is a student app for productivity and well-being, featuring a Mood Checker, <br> To-Do List, study sounds, flashcards, and a customizable profile.<br/><br>
             UI/UX by: <a href="https://madebyfei.vercel.app/" target="_blank">https://madebyfei.vercel.app/</a>
           </p>
-          <!-- <a href="https://nextjs-chakra-chatapp-qnhb6dq42-bscottnz.vercel.app/" target="_blank"
+          <a href="https://nextjs-chakra-chatapp-qnhb6dq42-bscottnz.vercel.app/" target="_blank"
             ><div class="project__live-2">live app</div></a
           >
           <a href="https://github.com/bscottnz/nextjs-chakra-chatapp" target="_blank"
             ><div class="project__live-2">learn more</div></a
-          > -->
+          >
         </div>
         
         <a href="https://nextjs-chakra-chatapp-qnhb6dq42-bscottnz.vercel.app/" target="_blank">
@@ -359,22 +359,22 @@
       </div>
 
       <div class="project project-left">
-        <!-- <a href="https://lifeinvadersocial.herokuapp.com/" target="_blank"> -->
+        <a href="https://lifeinvadersocial.herokuapp.com/" target="_blank">
           <div class="project__image-container weather">
             <div class="project__image-image">
               <img src="./src/assets/2.png" alt="" />
             </div>
           </div>
-        <!-- </a> -->
+        </a>
         <div class="project__info">
           <h3 class="project__title">Android Ecommerce<br />Shhh don't judge, I know.</h3>
           <p class="project__description">Trip ko lang, next time ko na ayusin.</p>
-          <!-- <a href="https://bscottnz.github.io/esketch/" target="_blank"
+          <a href="https://bscottnz.github.io/esketch/" target="_blank"
             ><div class="project__live-2">Live app</div></a
           >
           <a href="https://github.com/bscottnz/esketch" target="_blank"
             ><div class="project__live-2">learn more</div></a
-          > -->
+          >
         </div>
       </div>
 
@@ -382,12 +382,12 @@
         <div class="project__info">
           <h3 class="project__title">Coming Soon<br />WIP</h3>
           <p class="project__description">Secret muna.</p>
-          <!-- <a href="https://bscottnz.github.io/todo/" target="_blank"
+          <a href="https://bscottnz.github.io/todo/" target="_blank"
             ><div class="project__live-2">live app</div></a
           >
           <a href="https://github.com/bscottnz/todo" target="_blank"
             ><div class="project__live-2">learn more</div></a
-          > -->
+          >
         </div>
         <a href="https://bscottnz.github.io/todo/" target="_blank">
           <div class="project__image-container todo">
@@ -397,8 +397,62 @@
           </div>
         </a>
       </div>
+    </section> -->
+
+    <!-- <section class="projects" id="projects">
+      <h2 class="projects__heading section-heading">Projects</h2>
+
+      <div class="slider">
+        <div class="rotator">
+          <div class="items">
+            <a href="https://lifeinvadersocial.herokuapp.com/" target="_blank">
+              <img src="./src/assets/nuls.png" alt="NULS Inventory System" />
+            </a>
+          </div>
+
+          <div class="items">
+            <a href="https://nextjs-chakra-chatapp-qnhb6dq42-bscottnz.vercel.app/" target="_blank">
+              <img src="./src/assets/1.png" alt="Studdy Mood App" />
+            </a>
+          </div>
+
+          <div class="items">
+            <a href="https://bscottnz.github.io/esketch/" target="_blank">
+              <img src="./src/assets/2.png" alt="Ecommerce App" />
+            </a>
+          </div>
+
+          <div class="items">
+            <a href="https://bscottnz.github.io/todo/" target="_blank">
+              <img src="./src/assets/1.png" alt="Coming Soon" />
+            </a>
+          </div>
+        </div>
+      </div>
+    </section> -->
+
+    <section class="projects" id="projects">
+      <h2 class="projects__heading section-heading">Projects</h2>
+
+      <div class="container">
+        <div class="panel active" style="background-image: url('https://images.unsplash.com/photo-1558979158-65a1eaa08691?auto=format&fit=crop&w=1350&q=80')">
+          <h3>Explore The World</h3>
+        </div>
+        <div class="panel" style="background-image: url('https://images.unsplash.com/photo-1572276596237-5db2c3e16c5d?auto=format&fit=crop&w=1350&q=80')">
+          <h3>Wild Forest</h3>
+        </div>
+        <div class="panel" style="background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1353&q=80')">
+          <h3>Sunny Beach</h3>
+        </div>
+        <div class="panel" style="background-image: url('https://images.unsplash.com/photo-1551009175-8a68da93d5f9?auto=format&fit=crop&w=1351&q=80')">
+          <h3>City on Winter</h3>
+        </div>
+        <div class="panel" style="background-image: url('https://images.unsplash.com/photo-1549880338-65ddcdfd017b?auto=format&fit=crop&w=1350&q=80')">
+          <h3>Mountains - Clouds</h3>
+        </div>
+      </div>
     </section>
-    
+
     <!-- <section class="contact" id="contact">
       <h2 class="contact__heading section-heading">Contact</h2>
       <p class="contact__text">Have a question or want to work together? Leave your details and I'll get back to you as soon as possible.</p>
@@ -663,6 +717,23 @@
       blurb.style.marginTop = "140px"; // Reset to default
     });
   });
+</script>
+
+<script>
+  const panels = document.querySelectorAll('.panel');
+
+  panels.forEach(panel => {
+    panel.addEventListener('click', () => {
+      removeActiveClasses();
+      panel.classList.add('active');
+    });
+  });
+
+  function removeActiveClasses() {
+    panels.forEach(panel => {
+      panel.classList.remove('active');
+    });
+  }
 </script>
 
   </body>

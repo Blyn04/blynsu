@@ -1822,3 +1822,134 @@ body {
   color: #ffffff;
 }
 
+.slider {
+  position: relative;
+  width: 500px; /* increased from 350px */
+  margin: 0 auto;
+  perspective: 1000px;
+  padding-top: 120px;
+  min-height: 400px; /* increased from 300px to fit taller images */
+}
+
+.rotator {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 70%; /* wider carousel ring */
+  height: 250px; /* increased from 150px */
+  transform-style: preserve-3d;
+  animation: roter 25s linear infinite;
+}
+
+.items {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 17px;
+}
+
+.items img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 17px;
+  transition: all 0.5s ease;
+}
+
+.items:hover img {
+  transform: scale(1.05);
+}
+
+@keyframes roter {
+  from {
+    transform: rotateY(0deg);
+  }
+  to {
+    transform: rotateY(360deg);
+  }
+}
+
+/* Carousel positions - you can add more if needed */
+.items:nth-child(1) {
+  transform: rotateY(0deg) translateZ(400px); /* increased Z distance */
+}
+.items:nth-child(2) {
+  transform: rotateY(90deg) translateZ(400px);
+}
+.items:nth-child(3) {
+  transform: rotateY(180deg) translateZ(400px);
+}
+.items:nth-child(4) {
+  transform: rotateY(270deg) translateZ(400px);
+}
+
+.rotator:hover {
+  animation-play-state: paused;
+}
+
+.projects__heading {
+  padding-bottom: 0;
+  margin-bottom: 1.5rem; /* Add this instead */
+}
+
+.projects {
+  margin-bottom: 10rem; 
+}
+
+.container {
+  display: flex;
+  width: 90vw;
+  margin: 1.5rem auto 0 auto; /* reduced top margin */
+}
+
+.panel {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 80vh;
+  border-radius: 30px;
+  color: #fff;
+  cursor: pointer;
+  flex: 0.5;
+  margin: 10px;
+  position: relative;
+  transition: all 700ms ease-in;
+}
+
+.panel h3 {
+  font-size: 24px;
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  margin: 0;
+  opacity: 0;
+}
+
+.panel.active {
+  flex: 5;
+}
+
+.panel.active h3 {
+  opacity: 1;
+  transition: opacity 0.3s ease-in 0.4s;
+}
+
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .panel {
+    width: 100%;
+    height: 60vh;
+    margin: 1rem 0;
+  }
+
+  .panel.active {
+    flex: 1 !important;
+  }
+}
