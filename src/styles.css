@@ -597,7 +597,9 @@ button {
 
 .socials__github,
 .socials__email,
-.socials__linkedin {
+.socials__linkedin,
+.socials__facebook,
+.socials__instagram {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -609,7 +611,9 @@ button {
 
 .socials__github:hover,
 .socials__email:hover,
-.socials__linkedin:hover {
+.socials__linkedin:hover,
+.socials__facebook:hover,
+.socials__instagram:hover {
   transform: scale(1.2);
 }
 
@@ -625,6 +629,14 @@ button {
   margin-left: 1rem;
 }
 
+.socials__facebook {
+  margin-left: 1rem;
+}
+
+.socials__instagram {
+margin-left: 1rem;
+}
+
 .socials img {
   height: 100%;
 }
@@ -633,6 +645,16 @@ button {
   width: 41px;
   height: 41px;
   margin-left: 5px;
+}
+
+.socials__facebook img {
+  margin-left: 3.5px;
+}
+
+.socials__instagram img {
+  width: 41px;
+  height: 41px;
+  margin-left: 3.5px;
 }
 
 .copyright {
