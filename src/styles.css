@@ -1901,7 +1901,7 @@ body {
 
 .container {
   display: flex;
-  width: 90vw;
+  width: 95vw;
   margin: 1.5rem auto 0 auto;
   gap: 20px;
 }
@@ -2051,12 +2051,25 @@ body {
 
 .panel__img {
   position: absolute;
-  inset: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: cover;           /* Default when collapsed */
   z-index: 0;
   border-radius: 30px;
+  pointer-events: none;
+
+  /* 🔽 Animate scale and object-fit for smooth effect */
+  transition: transform 0.7s ease-in-out, object-fit 0.7s ease-in-out;
+  transform: scale(1); /* normal size */
+}
+
+.panel.active .panel__img {
+  object-fit: fill;          /* Stretch image when expanded */
+  transform: scale(1.05);    /* Slight zoom-in effect for smoothness */
 }
 
 /* 
