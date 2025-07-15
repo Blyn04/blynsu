@@ -1901,7 +1901,7 @@ body {
 
 .container {
   display: flex;
-  width: 95vw;
+  width: 92vw;
   margin: 1.5rem auto 0 auto;
   gap: 20px;
 }
@@ -1988,7 +1988,7 @@ body {
   color: #020202;
   padding: 1rem;
   border-radius: 15px;
-  max-width: 280px;
+  max-width: 300px;
   margin: 1.5rem;
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
   opacity: 0;
@@ -2004,12 +2004,12 @@ body {
 
 .panel__card h3 {
   margin: 0 0 0.5rem;
-  font-size: 1.25rem;
+  font-size: 1.5rem;
 }
 
 .panel__card p {
   margin: 0.25rem 0;
-  font-size: 0.95rem;
+  font-size: 1.2rem;
   line-height: 1.4;
 }
 
