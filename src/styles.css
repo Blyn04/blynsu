@@ -144,11 +144,13 @@ button {
 /* img1–5 */
 .profile:has(.image-grid img:nth-child(-n+5):hover) .profile__blurb {
   margin-top: 150px;
+  text-align: center;
 }
 
 /* img6–10 */
 .profile:has(.image-grid img:nth-child(n+6):hover) .profile__blurb {
   margin-top: 250px;
+  text-align: center;
 }
 
 @media (max-width: 600px) {
