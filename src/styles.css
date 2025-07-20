@@ -1926,7 +1926,7 @@ body {
 
 .container {
   display: flex;
-  width: 92vw;
+  width: 95vw;
   margin: 1.5rem auto 0 auto;
   gap: 20px;
 }
@@ -2020,6 +2020,8 @@ body {
   transition: opacity 0.4s ease, transform 0.4s ease;
   transform: translateY(10px);
   backdrop-filter: blur(4px);
+  max-height: 60vh;
+  overflow-y: auto;
 }
 
 .panel.active .panel__card {
@@ -2064,7 +2066,8 @@ body {
   position: relative;
   overflow: hidden;
   border-radius: 30px;
-  height: 80vh;
+  height: 68vh;
+  min-height: 500px; 
   flex: 0.5;
   margin: 10px 0;
   cursor: pointer;
@@ -2090,11 +2093,13 @@ body {
   /* 🔽 Animate scale and object-fit for smooth effect */
   transition: transform 0.7s ease-in-out, object-fit 0.7s ease-in-out;
   transform: scale(1); /* normal size */
+  padding: 0px;
 }
 
 .panel.active .panel__img {
   object-fit: fill;          /* Stretch image when expanded */
   transform: scale(1.05);    /* Slight zoom-in effect for smoothness */
+  padding: 25px;
 }
 
 /* 
