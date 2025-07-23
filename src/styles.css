@@ -185,31 +185,33 @@ button {
 .skills__heading-wrapper {
   position: absolute;
   top: -60px;
-  left: 50%;
+  left: 48%;
   transform: translateX(-50%);
   text-align: center;
 }
 
 .tech-skills-heading {
+  position: relative;
   font-size: 2.5rem;
   font-weight: bold;
   color: #ffffff;
-  position: relative;
   display: inline-block;
 }
 
 .tech-skills-heading::after {
   content: "";
-  display: block;
-  width: 60px;
-  height: 4px;
+  position: absolute;
+  top: 100%;                  /* place directly under the text */
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 8px;            /* space between text and bar */
+  width: 120%;                /* wider than the text */
+  height: 5px;
   background-color: #4a90e2;
-  margin: 10px auto 0;
   border-radius: 2px;
 }
 
 /* Keep your existing row, item, responsive, and animation styles below */
-
 .skills__row {
   display: flex;
   flex-direction: column;
