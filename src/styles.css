@@ -2094,7 +2094,7 @@ body {
   position: relative;
   overflow: hidden;
   border-radius: 30px;
-  height: 68vh;
+  height: 65vh;
   min-height: 500px; 
   flex: 0.5;
   margin: 10px 0;
@@ -2128,6 +2128,7 @@ body {
   object-fit: fill;          /* Stretch image when expanded */
   transform: scale(1.05);    /* Slight zoom-in effect for smoothness */
   padding: 25px;
+  border-radius: 40px;
 }
 
 /* 
