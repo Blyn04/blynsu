@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "set NODE_OPTIONS=--openssl-legacy-provider && webpack serve --config webpack.dev.js --open",
-    "build": "webpack --config webpack.prod.js"
+    "build": "set NODE_OPTIONS=--openssl-legacy-provider && webpack --config webpack.prod.js"
   },
   "repository": {
     "type": "git",

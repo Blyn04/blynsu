@@ -2502,6 +2502,27 @@ body {
   font-weight: 700;
 }
 
+.project-modal__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 2px;
+  margin-bottom: 10px;
+}
+
+.project-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+  color: rgba(255, 255, 255, 0.92);
+  background: rgba(43, 106, 188, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
 .project-modal__desc {
   margin-top: 12px;
   font-size: 15px;

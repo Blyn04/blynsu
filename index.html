@@ -617,6 +617,7 @@ I’m a 4th-year BSIT student at the National University – MOA, specializing i
               data-project-img="./src/assets/nulsweb.png"
               data-project-url=""
               data-project-desc="Inventory Management and Asset Monitoring System"
+              data-project-tags="Web, Inventory, Admin"
             >
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
                 <use href="#project-card-icon"></use>
@@ -640,6 +641,7 @@ I’m a 4th-year BSIT student at the National University – MOA, specializing i
               data-project-img="./src/assets/1.png"
               data-project-url=""
               data-project-desc="Student productivity and mood tracking application. UI/UX by: https://madebyfei.vercel.app/"
+              data-project-tags="Mobile, Productivity, UI/UX"
             >
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
                 <use href="#project-card-icon"></use>
@@ -663,6 +665,7 @@ I’m a 4th-year BSIT student at the National University – MOA, specializing i
               data-project-img="./src/assets/portfolio.png"
               data-project-url=""
               data-project-desc="A showcase of my projects, skills, and personal background with easy contact access."
+              data-project-tags="Web, Portfolio, UI"
             >
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
                 <use href="#project-card-icon"></use>
@@ -692,6 +695,7 @@ I’m a 4th-year BSIT student at the National University – MOA, specializing i
               data-project-img="./src/assets/jpcs-attendance.png"
               data-project-url="https://jpcs-events.vercel.app"
               data-project-desc="Smart event tool with auto registration, QR email delivery, and real-time attendance tracking."
+              data-project-tags="Web, QR, Events"
             >
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
                 <use href="#project-card-icon"></use>
@@ -715,6 +719,7 @@ I’m a 4th-year BSIT student at the National University – MOA, specializing i
               data-project-img="./src/assets/ticketing.png"
               data-project-url=""
               data-project-desc="All-in-one ticketing app for concerts, movies, sports, and campus events."
+              data-project-tags="Web, Tickets, Events"
             >
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
                 <use href="#project-card-icon"></use>
@@ -738,6 +743,7 @@ I’m a 4th-year BSIT student at the National University – MOA, specializing i
               data-project-img="./src/assets/2.png"
               data-project-url=""
               data-project-desc="Mobile ecommerce experiment for Android"
+              data-project-tags="Mobile, Ecommerce, Android"
             >
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
                 <use href="#project-card-icon"></use>
@@ -767,6 +773,7 @@ I’m a 4th-year BSIT student at the National University – MOA, specializing i
               data-project-img="./src/assets/findfood1.png"
               data-project-url="https://findfood-by-blyn.vercel.app"
               data-project-desc="Too lazy to choose food? FindFood suggests nearby eats or spin the roulette to decide!"
+              data-project-tags="Web, Maps, Fun"
             >
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
                 <use href="#project-card-icon"></use>
@@ -796,6 +803,7 @@ I’m a 4th-year BSIT student at the National University – MOA, specializing i
               data-project-img="./src/assets/bday.png"
               data-project-url="https://happy-birthday-by-blyn.vercel.app/"
               data-project-desc="Blow the candle out with your mic and uncover a hidden letter."
+              data-project-tags="Web, Audio, Interactive"
             >
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
                 <use href="#project-card-icon"></use>
@@ -825,6 +833,7 @@ I’m a 4th-year BSIT student at the National University – MOA, specializing i
               data-project-img="./src/assets/gamenation.png"
               data-project-url="https://gamenation-ph.vercel.app/"
               data-project-desc="An e-commerce platform for selling PS5 games with discounts and reward points."
+              data-project-tags="Web, Ecommerce, Rewards"
             >
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
                 <use href="#project-card-icon"></use>
@@ -847,6 +856,7 @@ I’m a 4th-year BSIT student at the National University – MOA, specializing i
         <div class="project-modal__body">
           <img id="projectModalImage" class="project-modal__image" src="" alt="Project preview image" />
           <div class="project-modal__meta">
+            <div id="projectModalTags" class="project-modal__tags"></div>
             <a id="projectModalUrl" href="#" target="_blank" rel="noreferrer" style="display: none;">Live URL</a>
             <p id="projectModalDesc" class="project-modal__desc"></p>
             <div class="project-modal__hint">Click outside the modal or press Esc to close.</div>
@@ -1160,11 +1170,17 @@ I’m a 4th-year BSIT student at the National University – MOA, specializing i
     const imgEl = document.getElementById('projectModalImage');
     const urlEl = document.getElementById('projectModalUrl');
     const descEl = document.getElementById('projectModalDesc');
+    const tagsEl = document.getElementById('projectModalTags');
 
-    const openModal = ({ title, img, url, desc }) => {
+    const openModal = ({ title, img, url, desc, tags }) => {
       if (titleEl) titleEl.textContent = title || '';
       if (imgEl) imgEl.src = img || '';
       if (descEl) descEl.textContent = desc || '';
+      if (tagsEl) {
+        tagsEl.innerHTML = (tags || [])
+          .map((t) => `<span class="project-tag">${t}</span>`)
+          .join('');
+      }
 
       if (!urlEl) return;
       if (url && url.trim() !== '') {
@@ -1194,6 +1210,10 @@ I’m a 4th-year BSIT student at the National University – MOA, specializing i
           img: btn.getAttribute('data-project-img'),
           url: btn.getAttribute('data-project-url'),
           desc: btn.getAttribute('data-project-desc'),
+          tags: (btn.getAttribute('data-project-tags') || '')
+            .split(',')
+            .map((t) => t.trim())
+            .filter(Boolean),
         });
       });
     });
