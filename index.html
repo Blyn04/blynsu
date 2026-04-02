@@ -538,90 +538,322 @@ I’m a 4th-year BSIT student at the National University – MOA, specializing i
     <section class="projects" id="projects">
       <h2 class="projects__heading section-heading">Projects</h2>
 
-      <div class="container">
-        <div class="panel active">
-          <img src="./src/assets/nulsweb.png" alt="NULS" class="panel__img" />
-          <div class="panel__card">
-            <h3>NULS Inventory</h3>
-            <p>Inventory Management and Asset Monitoring System</p>
+      <div class="projects-cards">
+        <!-- Shared SVG defs so the large icon markup only exists once -->
+        <svg width="0" height="0" style="position: absolute;" aria-hidden="true" focusable="false">
+          <defs>
+            <g id="project-card-art" xml:space="preserve">
+              <rect class="st1" height="78.6" transform="matrix(0.9761 0.2175 -0.2175 0.9761 15.4391 -12.3278)" width="101.2" x="13.1" y="24.7"></rect>
+              <rect class="st53" height="78.6" transform="matrix(0.9761 0.2175 -0.2175 0.9761 15.4391 -12.3278)" width="101.2" x="13.1" y="24.7"></rect>
+              <polygon class="st16" points="116,62 116,35.4 38.1,18 22.1,18 5.8,91.3 76.2,107 106,107"></polygon>
+              <polygon class="st1" points="97.2,23 10,23 10,102 111,102 111,36.8"></polygon>
+              <polygon class="st53" points="97.2,23 10,23 10,102 111,102 111,36.8"></polygon>
+              <g>
+                <rect class="st7" height="58" width="80" x="20" y="34"></rect>
+                <g>
+                  <polygon class="st9" points="100.2,92 73.1,44.2 51.2,75.5 40,58.7 20.2,92 39.7,92"></polygon>
+                  <circle class="st18" cx="57" cy="52" r="11"></circle>
+                  <polygon class="st1" points="40,58.5 31.6,72.6 34.6,78.2 37.9,75.2 43.5,79.9 47,78.2 51,75.2"></polygon>
+                  <path class="st1" d="M57.7,66c0,0,4.1,7.2,4.3,6.6c0.2-0.6,6.1-5.6,6.1-5.6l6.9,3.6l1.5-10.3L88.9,72L73.1,44.1L57.7,66z"></path>
+                  <polygon class="st15" points="73.1,44.2 83.6,92 100.2,92"></polygon>
+                  <polyline class="st2" points="100.2,91.9 73.1,44.1 39.7,91.9"></polyline>
+                  <polyline class="st2" points="51.2,75.4 40,58.5 20.2,91.9"></polyline>
+                  <polygon class="st15" points="51.2,75.4 40,58.5 47,81.3"></polygon>
+                  <polyline class="st2" points="51.5,91.9 67.1,70.5 80.4,91.9"></polyline>
+                  <polygon class="st15" points="72.3,92 67.1,70.7 80.4,92"></polygon>
+                </g>
+                <rect class="st53" height="58" width="80" x="20" y="34"></rect>
+              </g>
+              <polygon class="st18" points="111,37 97,37 97,23"></polygon>
+              <polygon class="st53" points="111,37 97,37 97,23"></polygon>
+            </g>
+
+            <g id="project-card-icon">
+              <circle cx="128" cy="128" r="96" opacity="0.2"></circle>
+              <circle
+                cx="128"
+                cy="128"
+                r="96"
+                fill="none"
+                stroke="rgb(224, 223, 220)"
+                stroke-miterlimit="10"
+                stroke-width="16"
+              ></circle>
+              <polyline
+                points="134.1 161.9 168 128 134.1 94.1"
+                fill="none"
+                stroke="rgb(224, 223, 220)"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="16"
+              ></polyline>
+              <line
+                x1="88"
+                y1="128"
+                x2="168"
+                y2="128"
+                fill="none"
+                stroke="rgb(224, 223, 220)"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="16"
+              ></line>
+            </g>
+          </defs>
+        </svg>
+
+        <div class="card project-card" role="group" aria-label="NULS Inventory">
+          <div class="card__img" aria-hidden="true">
+            <img src="./src/assets/nulsweb.png" alt="" />
+          </div>
+          <div class="card__subtitle">Inventory System</div>
+          <div class="card__wrapper">
+            <div class="card__title">NULS</div>
+            <button
+              type="button"
+              class="card__arrow card__icon"
+              aria-label="Open project details for NULS Inventory"
+              data-project-title="NULS Inventory"
+              data-project-img="./src/assets/nulsweb.png"
+              data-project-url=""
+              data-project-desc="Inventory Management and Asset Monitoring System"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+                <use href="#project-card-icon"></use>
+              </svg>
+            </button>
           </div>
         </div>
 
-        <div class="panel">
-          <img src="./src/assets/1.png" alt="Studdy App" class="panel__img" />
-          <div class="panel__card">
-            <h3>Studdy App</h3>
-            <p>Student productivity and mood tracking application</p>
-            <p>UI/UX by: <a href="https://madebyfei.vercel.app/" target="_blank">madebyfei.vercel.app</a></p>
+        <div class="card project-card" role="group" aria-label="Studdy App">
+          <div class="card__img" aria-hidden="true">
+            <img src="./src/assets/1.png" alt="" />
+          </div>
+          <div class="card__subtitle">Productivity Tracker</div>
+          <div class="card__wrapper">
+            <div class="card__title">Studdy</div>
+            <button
+              type="button"
+              class="card__arrow card__icon"
+              aria-label="Open project details for Studdy"
+              data-project-title="Studdy"
+              data-project-img="./src/assets/1.png"
+              data-project-url=""
+              data-project-desc="Student productivity and mood tracking application. UI/UX by: https://madebyfei.vercel.app/"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+                <use href="#project-card-icon"></use>
+              </svg>
+            </button>
           </div>
         </div>
 
-        <div class="panel">
-          <img src="./src/assets/portfolio.png" alt="Portfolio" class="panel__img" />
-          <div class="panel__card">
-            <h3>Portfolio</h3>
-            <p>A showcase of my projects, skills, and personal background with easy contact access.
-            </p>
+        <div class="card project-card" role="group" aria-label="Portfolio">
+          <div class="card__img" aria-hidden="true">
+            <img src="./src/assets/portfolio.png" alt="" />
+          </div>
+          <div class="card__subtitle">Personal Portfolio</div>
+          <div class="card__wrapper">
+            <div class="card__title">Portfolio</div>
+            <button
+              type="button"
+              class="card__arrow card__icon"
+              aria-label="Open project details for Portfolio"
+              data-project-title="Portfolio"
+              data-project-img="./src/assets/portfolio.png"
+              data-project-url=""
+              data-project-desc="A showcase of my projects, skills, and personal background with easy contact access."
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+                <use href="#project-card-icon"></use>
+              </svg>
+            </button>
           </div>
         </div>
 
-        <div class="panel">
-          <img src="./src/assets/jpcs-attendance.png" alt="JPCS Event Attendance Tracker" class="panel__img" />
-          <div class="panel__card">
-            <h3>JPCS Event Attendance Tracker</h3>
-            <p>
-              Smart event tool with auto registration, QR email delivery, and real-time attendance tracking. <br/>
-              <a href="https://jpcs-events.vercel.app" target="_blank">https://jpcs-events.vercel.app</a></p>
-            </p>
+        <a
+          class="card project-card"
+          href="https://jpcs-events.vercel.app"
+          target="_blank"
+          rel="noreferrer"
+          aria-label="JPCS Event Attendance Tracker"
+        >
+          <div class="card__img" aria-hidden="true">
+            <img src="./src/assets/jpcs-attendance.png" alt="" />
+          </div>
+          <div class="card__subtitle">Event Attendance</div>
+          <div class="card__wrapper">
+            <div class="card__title">JPCS</div>
+            <button
+              type="button"
+              class="card__arrow card__icon"
+              aria-label="Open project details for JPCS Event Attendance Tracker"
+              data-project-title="JPCS Event Attendance Tracker"
+              data-project-img="./src/assets/jpcs-attendance.png"
+              data-project-url="https://jpcs-events.vercel.app"
+              data-project-desc="Smart event tool with auto registration, QR email delivery, and real-time attendance tracking."
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+                <use href="#project-card-icon"></use>
+              </svg>
+            </button>
+          </div>
+        </a>
+
+        <div class="card project-card" role="group" aria-label="Ticketing System">
+          <div class="card__img" aria-hidden="true">
+            <img src="./src/assets/ticketing.png" alt="" />
+          </div>
+          <div class="card__subtitle">Ticketing App</div>
+          <div class="card__wrapper">
+            <div class="card__title">Ticketing</div>
+            <button
+              type="button"
+              class="card__arrow card__icon"
+              aria-label="Open project details for Ticketing"
+              data-project-title="Ticketing System"
+              data-project-img="./src/assets/ticketing.png"
+              data-project-url=""
+              data-project-desc="All-in-one ticketing app for concerts, movies, sports, and campus events."
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+                <use href="#project-card-icon"></use>
+              </svg>
+            </button>
           </div>
         </div>
 
-        <div class="panel">
-          <img src="./src/assets/ticketing.png" alt="Ticketing System" class="panel__img" />
-          <div class="panel__card">
-            <h3>Ticketing System</h3>
-            <p>All-in-one ticketing app for concerts, movies, sports, and campus events.</p>
+        <div class="card project-card" role="group" aria-label="Ecommerce">
+          <div class="card__img" aria-hidden="true">
+            <img src="./src/assets/2.png" alt="" />
+          </div>
+          <div class="card__subtitle">Mobile Ecommerce</div>
+          <div class="card__wrapper">
+            <div class="card__title">Ecommerce</div>
+            <button
+              type="button"
+              class="card__arrow card__icon"
+              aria-label="Open project details for Ecommerce"
+              data-project-title="Ecommerce"
+              data-project-img="./src/assets/2.png"
+              data-project-url=""
+              data-project-desc="Mobile ecommerce experiment for Android"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+                <use href="#project-card-icon"></use>
+              </svg>
+            </button>
           </div>
         </div>
 
-        <div class="panel">
-          <img src="./src/assets/2.png" alt="Ecommerce" class="panel__img" />
-          <div class="panel__card">
-            <h3>Ecommerce</h3>
-            <p>Mobile ecommerce experiment for Android</p>
+        <a
+          class="card project-card"
+          href="https://findfood-by-blyn.vercel.app"
+          target="_blank"
+          rel="noreferrer"
+          aria-label="FindFood"
+        >
+          <div class="card__img" aria-hidden="true">
+            <img src="./src/assets/findfood1.png" alt="" />
           </div>
+          <div class="card__subtitle">Food Finder</div>
+          <div class="card__wrapper">
+            <div class="card__title">FindFood</div>
+            <button
+              type="button"
+              class="card__arrow card__icon"
+              aria-label="Open project details for FindFood"
+              data-project-title="FindFood"
+              data-project-img="./src/assets/findfood1.png"
+              data-project-url="https://findfood-by-blyn.vercel.app"
+              data-project-desc="Too lazy to choose food? FindFood suggests nearby eats or spin the roulette to decide!"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+                <use href="#project-card-icon"></use>
+              </svg>
+            </button>
+          </div>
+        </a>
+
+        <a
+          class="card project-card"
+          href="https://happy-birthday-by-blyn.vercel.app/"
+          target="_blank"
+          rel="noreferrer"
+          aria-label="Interactive Happy Birthday Greeting Web"
+        >
+          <div class="card__img" aria-hidden="true">
+            <img src="./src/assets/bday.png" alt="" />
+          </div>
+          <div class="card__subtitle">Interactive Web</div>
+          <div class="card__wrapper">
+            <div class="card__title">Birthday Web</div>
+            <button
+              type="button"
+              class="card__arrow card__icon"
+              aria-label="Open project details for Interactive Happy Birthday Greeting Web"
+              data-project-title="Interactive Happy Birthday Greeting Web"
+              data-project-img="./src/assets/bday.png"
+              data-project-url="https://happy-birthday-by-blyn.vercel.app/"
+              data-project-desc="Blow the candle out with your mic and uncover a hidden letter."
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+                <use href="#project-card-icon"></use>
+              </svg>
+            </button>
+          </div>
+        </a>
+
+        <a
+          class="card project-card"
+          href="https://gamenation-ph.vercel.app/"
+          target="_blank"
+          rel="noreferrer"
+          aria-label="Gamenation"
+        >
+          <div class="card__img" aria-hidden="true">
+            <img src="./src/assets/gamenation.png" alt="" />
+          </div>
+          <div class="card__subtitle">PS5 Ecommerce</div>
+          <div class="card__wrapper">
+            <div class="card__title">Gamenation</div>
+            <button
+              type="button"
+              class="card__arrow card__icon"
+              aria-label="Open project details for Gamenation"
+              data-project-title="Gamenation"
+              data-project-img="./src/assets/gamenation.png"
+              data-project-url="https://gamenation-ph.vercel.app/"
+              data-project-desc="An e-commerce platform for selling PS5 games with discounts and reward points."
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+                <use href="#project-card-icon"></use>
+              </svg>
+            </button>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <div id="projectModal" class="project-modal" aria-hidden="true">
+      <div class="project-modal__content" role="dialog" aria-modal="true" aria-labelledby="projectModalTitle">
+        <div class="project-modal__header">
+          <h3 id="projectModalTitle" class="project-modal__title">Project</h3>
+          <button type="button" class="project-modal__close" id="projectModalClose" aria-label="Close project modal">
+            ×
+          </button>
         </div>
 
-        <div class="panel">
-          <img src="./src/assets/findfood1.png" alt="FindFood" class="panel__img" />
-          <div class="panel__card">
-            <h3>FindFood</h3>
-            <p>
-              Too lazy to choose food? FindFood suggests nearby eats or spin the roulette to decide! <br/>
-              <a href="https://findfood-by-blyn.vercel.app" target="_blank">https://findfood-by-blyn.vercel.app</a></p>
-            </p>
-          </div>
-        </div>
-
-        <div class="panel">
-          <img src="./src/assets/bday.png" alt="Interactive Web" class="panel__img" />
-          <div class="panel__card">
-            <h3>Interactive Happy Birthday Greeting Web</h3>
-            <p>Blow the candle out with your mic and uncover a hidden letter. <br/>
-             <a href="https://happy-birthday-by-blyn.vercel.app/" target="_blank">https://happy-birthday-by-blyn.vercel.app</a></p>
-          </div>
-        </div>
-
-        <div class="panel">
-          <img src="./src/assets/gamenation.png" alt="Mood Checker" class="panel__img" />
-          <div class="panel__card">
-            <h3>Gamenation</h3>
-            <p>An e-commerce platform for selling PS5 games with discounts and reward points. <br/>
-             <a href="https://gamenation-ph.vercel.app/" target="_blank">https://gamenation-ph.vercel.app</a></p>
+        <div class="project-modal__body">
+          <img id="projectModalImage" class="project-modal__image" src="" alt="Project preview image" />
+          <div class="project-modal__meta">
+            <a id="projectModalUrl" href="#" target="_blank" rel="noreferrer" style="display: none;">Live URL</a>
+            <p id="projectModalDesc" class="project-modal__desc"></p>
+            <div class="project-modal__hint">Click outside the modal or press Esc to close.</div>
           </div>
         </div>
       </div>
-    </section>
+    </div>
 
     <!-- <section class="contact" id="contact">
       <h2 class="contact__heading section-heading">Contact</h2>
@@ -916,6 +1148,65 @@ I’m a 4th-year BSIT student at the National University – MOA, specializing i
       panel.classList.remove('active');
     });
   }
+</script>
+
+<script>
+  (function () {
+    const modal = document.getElementById('projectModal');
+    if (!modal) return;
+
+    const closeBtn = document.getElementById('projectModalClose');
+    const titleEl = document.getElementById('projectModalTitle');
+    const imgEl = document.getElementById('projectModalImage');
+    const urlEl = document.getElementById('projectModalUrl');
+    const descEl = document.getElementById('projectModalDesc');
+
+    const openModal = ({ title, img, url, desc }) => {
+      if (titleEl) titleEl.textContent = title || '';
+      if (imgEl) imgEl.src = img || '';
+      if (descEl) descEl.textContent = desc || '';
+
+      if (!urlEl) return;
+      if (url && url.trim() !== '') {
+        urlEl.href = url;
+        urlEl.style.display = 'inline-block';
+      } else {
+        urlEl.href = '#';
+        urlEl.style.display = 'none';
+      }
+
+      modal.classList.add('open');
+      modal.setAttribute('aria-hidden', 'false');
+    };
+
+    const closeModal = () => {
+      modal.classList.remove('open');
+      modal.setAttribute('aria-hidden', 'true');
+    };
+
+    document.querySelectorAll('.card__arrow').forEach((btn) => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+
+        openModal({
+          title: btn.getAttribute('data-project-title'),
+          img: btn.getAttribute('data-project-img'),
+          url: btn.getAttribute('data-project-url'),
+          desc: btn.getAttribute('data-project-desc'),
+        });
+      });
+    });
+
+    closeBtn?.addEventListener('click', closeModal);
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) closeModal();
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modal.classList.contains('open')) closeModal();
+    });
+  })();
 </script>
 
   </body>

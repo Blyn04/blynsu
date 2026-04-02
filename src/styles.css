@@ -2202,3 +2202,326 @@ body {
   line-height: 1.3;
   word-wrap: break-word;
 } */
+
+/* Theme tokens (blue primary -> yellow secondary -> white text) */
+:root {
+  --theme-blue: #2b6abc;
+  --theme-yellow: #ffc408;
+  --theme-white: #ffffff;
+}
+
+/* Projects header secondary accent (yellow) */
+.projects__heading:after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: -2rem;
+  width: 13rem;
+  height: 4px;
+  border-radius: 999px;
+  background-color: var(--theme-yellow);
+  opacity: 0.9;
+}
+
+/* Project cards grid */
+.projects-cards {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  justify-content: center;
+  align-items: stretch;
+  gap: 3.2rem;
+  padding: 2rem 1rem 10rem;
+  max-width: 1550px;
+  margin: 0 auto;
+}
+
+@media (max-width: 1100px) {
+  .projects-cards {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 800px) {
+  .projects-cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .projects-cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Card component (from your provided markup) */
+.card.project-card {
+  --main-color: var(--theme-white);
+  --sub-color: var(--theme-blue);
+  --bg-color: rgba(255, 255, 255, 0.06);
+  --accent-color: var(--theme-yellow);
+
+  position: relative;
+  font-family: 'Montserrat', sans-serif;
+  width: 100%;
+  max-width: 340px;
+  padding: 28px;
+  border-radius: 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  background-color: var(--bg-color);
+  transition: all 0.2s;
+  cursor: default;
+  box-shadow: 0px 0px 5px -1.5px rgba(0, 0, 0, 0.55);
+  z-index: 0;
+}
+
+.card.project-card[href] {
+  cursor: pointer;
+}
+
+.card.project-card::before {
+  content: '';
+  width: 99%;
+  height: 99%;
+  background: var(--sub-color);
+  position: absolute;
+  z-index: -1;
+  top: 1px;
+  left: 1px;
+  border-radius: 25px;
+  transition: all 0.3s;
+}
+
+.card__wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card__img {
+  width: 100%;
+}
+
+.card__img img {
+  width: 100%;
+  height: 190px; /* make the project image bigger */
+  object-fit: cover;
+  display: block;
+  border-radius: 18px;
+}
+
+.card__title {
+  color: var(--main-color);
+  font-weight: 900;
+  font-size: 20px;
+  line-height: 1.1;
+  word-break: break-word;
+}
+
+.card__subtitle {
+  color: var(--sub-color);
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.card__icon {
+  width: 44px;
+  height: 44px;
+  transform: rotate(-45deg);
+  transition: all 0.3s;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card__arrow {
+  border: 0;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+}
+
+.card__arrow:focus-visible {
+  outline: 3px solid rgba(255, 196, 8, 0.7);
+  outline-offset: 4px;
+  border-radius: 12px;
+}
+
+.card__icon svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.card__icon circle,
+.card__icon polyline,
+.card__icon line {
+  stroke: var(--main-color) !important;
+  fill: none;
+}
+
+.card:hover .card__icon {
+  transform: rotate(0);
+}
+
+.card:hover .card__icon circle,
+.card:hover .card__icon polyline,
+.card:hover .card__icon line {
+  stroke: var(--accent-color) !important;
+}
+
+.card:hover {
+  box-shadow: 0px 0px 20px -5px rgba(0, 0, 0, 0.75);
+}
+
+.card:hover::before {
+  transform: rotate(10deg);
+  box-shadow: 0px 0px 20px -5px rgba(0, 0, 0, 0.75);
+}
+
+/* SVG color classes (used by your provided card art SVG) */
+.project-card .st1 {
+  fill: #fff;
+}
+
+.project-card .st2 {
+  fill: none;
+  stroke: var(--theme-blue);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-miterlimit: 10;
+}
+
+.project-card .st7 {
+  fill: rgba(43, 106, 188, 0.85);
+}
+
+.project-card .st9 {
+  fill: var(--theme-yellow);
+}
+
+.project-card .st15,
+.project-card .st16 {
+  opacity: 0.4;
+  fill: var(--theme-blue);
+}
+
+.project-card .st16 {
+  opacity: 0.2;
+}
+
+.project-card .st18 {
+  fill: var(--theme-yellow);
+}
+
+.project-card .st53 {
+  fill: none;
+  stroke: var(--theme-blue);
+  stroke-width: 1.848;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-miterlimit: 10;
+}
+
+/* Modal for project details */
+.project-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.65);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  z-index: 999999999;
+}
+
+.project-modal.open {
+  display: flex;
+}
+
+.project-modal__content {
+  width: min(980px, 100%);
+  background: #1c1c1c;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 24px;
+  box-shadow: 0 18px 60px rgba(0, 0, 0, 0.6);
+  padding: 22px;
+  color: #fafafa;
+}
+
+.project-modal__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.project-modal__title {
+  margin: 0;
+  font-size: 22px;
+  color: var(--theme-white);
+}
+
+.project-modal__close {
+  border: 0;
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--theme-white);
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 20px;
+  line-height: 1;
+}
+
+.project-modal__body {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 18px;
+  margin-top: 16px;
+}
+
+.project-modal__image {
+  width: 100%;
+  height: 360px;
+  object-fit: contain;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.project-modal__meta a {
+  color: var(--theme-yellow);
+  text-decoration: underline;
+  display: inline-block;
+  margin-top: 6px;
+  font-weight: 700;
+}
+
+.project-modal__desc {
+  margin-top: 12px;
+  font-size: 15px;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.project-modal__hint {
+  margin-top: 10px;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+@media (max-width: 860px) {
+  .project-modal__body {
+    grid-template-columns: 1fr;
+  }
+
+  .project-modal__image {
+    height: 260px;
+  }
+}
+
