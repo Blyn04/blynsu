@@ -5,7 +5,7 @@ const canvasDotsBg = function () {
       'rgb(81, 162, 233)',
       'rgb(81, 162, 233)',
       'rgb(81, 162, 233)',
-      'rgb(255, 77, 90)',
+      'rgb(255, 251, 2)',
     ], // 75% of dots are blue. 25% pink
     color = 'rgb(81, 162, 233)';
 
