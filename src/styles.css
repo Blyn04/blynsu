@@ -379,6 +379,26 @@ button {
   border-radius: 5px;
 }
 
+.skills__item--sass::after {
+  content: '';
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #ffc408 !important;
+  box-shadow: 0 0 8px rgba(255, 196, 8, 0.65);
+}
+
+.skills__item--text-only {
+  justify-content: center;
+}
+
+.skills__item--text-only .skills__item-name {
+  font-size: 1.4rem;
+}
+
 @keyframes moveInLeft {
   0% {
     opacity: 0;
@@ -2502,25 +2522,73 @@ body {
   font-weight: 700;
 }
 
-.project-modal__tags {
+.project-modal__tags-card {
+  width: 100%;
+  min-height: 180px;
+  margin: 4px 0 12px;
+  background: #ecf39e;
+  padding: 10px;
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
-  margin-top: 2px;
-  margin-bottom: 10px;
+  color: #31572c;
+  border-radius: 15px;
+  box-shadow: -12px 12px 0 -5px #31572c;
 }
 
-.project-tag {
-  display: inline-flex;
-  align-items: center;
-  padding: 6px 10px;
-  border-radius: 999px;
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 0.4px;
-  color: rgba(255, 255, 255, 0.92);
-  background: rgba(43, 106, 188, 0.25);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+.project-modal__tags-title {
+  font-weight: 900;
+  font-size: 1.7em;
+}
+
+.project-modal__tags {
+  overflow: auto;
+  height: 80%;
+  width: 100%;
+  margin-top: 6px;
+}
+
+.project-modal__tags-list {
+  margin: 0;
+  padding: 0;
+}
+
+.tag__name {
+  display: inline-block;
+  color: #fff;
+  font-size: 1.1em;
+  background-color: #31572c;
+  padding: 6px 23px 9px;
+  border-radius: 70em;
+  margin: 8px 6px 8px 0;
+  position: relative;
+  text-transform: lowercase;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.tag__name::before,
+.tag__name::after {
+  content: '';
+  display: inline-block;
+  position: absolute;
+  top: 40%;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #90a955;
+}
+
+.tag__name::before {
+  left: 7px;
+}
+
+.tag__name::after {
+  right: 7px;
+}
+
+.tag__name:hover {
+  transform: scale(1.1);
+  background-color: #51572c;
 }
 
 .project-modal__desc {
