@@ -735,7 +735,7 @@ button {
   border-radius: 5px;
 }
 
-.skills__item--sass::after {
+/* .skills__item--sass::after {
   content: '';
   position: absolute;
   top: 10px;
@@ -745,7 +745,7 @@ button {
   border-radius: 50%;
   background: #ffc408 !important;
   box-shadow: 0 0 8px rgba(255, 196, 8, 0.65);
-}
+} */
 
 .skills__item--text-only {
   justify-content: center;
