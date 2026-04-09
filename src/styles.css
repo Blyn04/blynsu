@@ -487,6 +487,24 @@ button {
   }
 }
 
+.experience__grid {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem; /* Adjust the space between columns */
+}
+
+/* Switches to side-by-side on screens larger than 768px */
+@media (min-width: 768px) {
+  .experience__grid {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+  
+  .experience__column {
+    flex: 1; /* Makes both columns take up equal width */
+  }
+}
+
 .profile__picture.image-grid {
   display: grid;
   grid-template-columns: repeat(5, 1fr); /* ⬅️ now 5 columns */
