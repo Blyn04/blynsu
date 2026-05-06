@@ -2879,6 +2879,53 @@ body {
   margin-top: 16px;
 }
 
+.project-modal__media {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 0;
+}
+
+.project-modal__media-top {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  min-height: 0;
+}
+
+.project-modal__view-toggle {
+  display: none;
+  align-items: center;
+  gap: 0;
+  padding: 4px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 196, 8, 0.35);
+}
+
+.project-modal__view-btn {
+  border: 0;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 8px 12px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.project-modal__view-btn.is-active {
+  background: var(--theme-yellow);
+  color: #1a1a1a;
+}
+
+.project-modal__view-btn:not(.is-active):hover {
+  color: #ffffff;
+}
+
 .project-modal__image {
   width: 100%;
   height: 360px;
@@ -2900,15 +2947,16 @@ body {
   width: 100%;
   min-height: 0;
   margin: 4px 0 10px;
-  background: #ecf39e;
+  background: rgba(255, 248, 214, 0.95);
   padding: 8px 10px 10px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   gap: 6px;
-  color: #31572c;
+  color: #143a66;
   border-radius: 15px;
-  box-shadow: -12px 12px 0 -5px #31572c;
+  box-shadow: -12px 12px 0 -5px var(--theme-blue);
+  border: 1px solid rgba(43, 106, 188, 0.25);
 }
 
 .project-modal__tags-title {
@@ -2938,7 +2986,7 @@ body {
   display: inline-block;
   color: #fff;
   font-size: 0.95em;
-  background-color: #31572c;
+  background-color: var(--theme-blue);
   padding: 5px 15px;
   border-radius: 70em;
   margin: 0;
@@ -2946,6 +2994,7 @@ body {
   text-transform: lowercase;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
+  border: 1px solid rgba(255, 196, 8, 0.45);
 }
 
 .tag__name::before,
@@ -2958,7 +3007,7 @@ body {
   width: 5px;
   height: 5px;
   border-radius: 50%;
-  background: #90a955;
+  background: var(--theme-yellow);
 }
 
 .tag__name::before {
@@ -2971,7 +3020,7 @@ body {
 
 .tag__name:hover {
   transform: scale(1.1);
-  background-color: #51572c;
+  background-color: #1f4f8a;
 }
 
 .project-modal__desc {

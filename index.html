@@ -759,6 +759,7 @@ I’m a 4th-year BSIT student at the National University – MOA, specializing i
               aria-label="Open project details for NULS Inventory"
               data-project-title="NULS Inventory"
               data-project-img="./src/assets/nulsweb.png"
+              data-project-img-mobile="./src/assets/nuls-mobile.png"
               data-project-url=""
               data-project-desc="Inventory Management and Asset Monitoring System"
               data-project-tags="Web, Inventory, Admin"
@@ -837,6 +838,7 @@ I’m a 4th-year BSIT student at the National University – MOA, specializing i
               aria-label="Open project details for JPCS Event Attendance Tracker"
               data-project-title="JPCS Event Attendance Tracker"
               data-project-img="./src/assets/jpcs-attendance.png"
+              data-project-img-mobile="./src/assets/jpcs-mobile.png"
               data-project-url="https://jpcs-events.vercel.app"
               data-project-desc="Smart event tool with auto registration, QR email delivery, and real-time attendance tracking."
               data-project-tags="Web, QR, Events"
@@ -999,6 +1001,7 @@ I’m a 4th-year BSIT student at the National University – MOA, specializing i
               aria-label="Open project details for GitGitAw"
               data-project-title="GitGitAw"
               data-project-img="./src/assets/git.png"
+              data-project-img-mobile="./src/assets/gitgitaw-mobile.png"
               data-project-url=""
               data-project-desc="Project focused on Git workflows, collaboration, and practical version-control skills for team-based development."
               data-project-tags="Git, Collaboration, Web"
@@ -1023,9 +1026,60 @@ I’m a 4th-year BSIT student at the National University – MOA, specializing i
               aria-label="Open project details for SagradaGo"
               data-project-title="SagradaGo"
               data-project-img="./src/assets/retro.png"
+              data-project-img-mobile="./src/assets/sagaradago-mobile.png"
               data-project-url=""
               data-project-desc="Sagrada-inspired digital board game experience: strategy, pattern building, and polished gameplay."
               data-project-tags="Game, Strategy, UI"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+                <use href="#project-card-icon"></use>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="card project-card" role="group" aria-label="Vehix">
+          <div class="card__img" aria-hidden="true">
+            <img src="./src/assets/vehix.png" alt="" />
+          </div>
+          <div class="card__subtitle">Vehicle Services</div>
+          <div class="card__wrapper">
+            <div class="card__title">Vehix</div>
+            <button
+              type="button"
+              class="card__arrow card__icon"
+              aria-label="Open project details for Vehix"
+              data-project-title="Vehix"
+              data-project-img="./src/assets/vehix.png"
+              data-project-img-mobile="./src/assets/vehix-mobile.png"
+              data-project-url=""
+              data-project-desc="Vehicle-focused project (details coming soon)."
+              data-project-tags="Web, Services, UI"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+                <use href="#project-card-icon"></use>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="card project-card" role="group" aria-label="WUI Design">
+          <div class="card__img" aria-hidden="true">
+            <img src="./src/assets/wui-design.png" alt="" />
+          </div>
+          <div class="card__subtitle">Open Source</div>
+          <div class="card__wrapper">
+            <div class="card__title">WUI Design</div>
+            <button
+              type="button"
+              class="card__arrow card__icon"
+              aria-label="Open project details for WUI Design"
+              data-project-title="WUI Design"
+              data-project-img="./src/assets/wui-design.png"
+              data-project-img-mobile="./src/assets/wui-design-mobile.png"
+              data-project-url=""
+              data-project-desc="Open-source UI design system project that I contributed to."
+              data-project-tags="Open Source, Design System, UI"
             >
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
                 <use href="#project-card-icon"></use>
@@ -1076,7 +1130,20 @@ I’m a 4th-year BSIT student at the National University – MOA, specializing i
         </div>
 
         <div class="project-modal__body">
-          <img id="projectModalImage" class="project-modal__image" src="" alt="Project preview image" />
+          <div class="project-modal__media">
+            <div class="project-modal__media-top">
+              <div class="project-modal__view-toggle" id="projectModalViewToggle" aria-label="Switch preview image">
+                <button type="button" class="project-modal__view-btn is-active" id="projectModalViewDesktop">Desktop</button>
+                <button type="button" class="project-modal__view-btn" id="projectModalViewMobile">Mobile</button>
+              </div>
+            </div>
+            <img
+              id="projectModalImage"
+              class="project-modal__image"
+              src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw=="
+              alt="Project preview image"
+            />
+          </div>
           <div class="project-modal__meta">
             <div class="project-modal__tags-card">
               <span class="project-modal__tags-title">All tags</span>
@@ -1310,14 +1377,60 @@ I’m a 4th-year BSIT student at the National University – MOA, specializing i
     const closeBtn = document.getElementById('projectModalClose');
     const titleEl = document.getElementById('projectModalTitle');
     const imgEl = document.getElementById('projectModalImage');
+    const viewToggleEl = document.getElementById('projectModalViewToggle');
+    const viewDesktopBtn = document.getElementById('projectModalViewDesktop');
+    const viewMobileBtn = document.getElementById('projectModalViewMobile');
     const urlEl = document.getElementById('projectModalUrl');
     const descEl = document.getElementById('projectModalDesc');
     const tagsEl = document.getElementById('projectModalTags');
 
-    const openModal = ({ title, img, url, desc, tags }) => {
+    const placeholderImg =
+      'data:image/svg+xml;charset=utf-8,' +
+      encodeURIComponent(
+        `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700">
+          <rect width="1200" height="700" fill="rgba(255,255,255,0.04)"/>
+          <rect x="28" y="28" width="1144" height="644" rx="24" fill="rgba(43,106,188,0.10)" stroke="rgba(255,255,255,0.10)" />
+          <text x="50%" y="48%" text-anchor="middle" fill="rgba(255,255,255,0.75)" font-family="Montserrat, Arial, sans-serif" font-size="36" font-weight="800">Preview unavailable</text>
+          <text x="50%" y="56%" text-anchor="middle" fill="rgba(255,255,255,0.55)" font-family="Montserrat, Arial, sans-serif" font-size="20">Add the screenshot to /src/assets</text>
+        </svg>`
+      );
+
+    let currentDesktopImg = '';
+    let currentMobileImg = '';
+
+    const setActiveView = (view) => {
+      const hasMobile = Boolean(currentMobileImg && currentMobileImg.trim() !== '');
+
+      if (viewToggleEl) {
+        viewToggleEl.style.display = hasMobile ? 'inline-flex' : 'none';
+      }
+
+      if (!imgEl) return;
+
+      if (view === 'mobile' && hasMobile) {
+        imgEl.src = currentMobileImg;
+        viewMobileBtn?.classList.add('is-active');
+        viewDesktopBtn?.classList.remove('is-active');
+      } else {
+        imgEl.src = currentDesktopImg || placeholderImg;
+        viewDesktopBtn?.classList.add('is-active');
+        viewMobileBtn?.classList.remove('is-active');
+      }
+    };
+
+    const openModal = ({ title, img, imgMobile, url, desc, tags }) => {
       if (titleEl) titleEl.textContent = title || '';
-      if (imgEl) imgEl.src = img || '';
       if (descEl) descEl.textContent = desc || '';
+
+      currentDesktopImg = img || '';
+      currentMobileImg = imgMobile || '';
+      setActiveView('desktop');
+
+      if (imgEl) {
+        imgEl.onerror = () => {
+          imgEl.src = placeholderImg;
+        };
+      }
       if (tagsEl) {
         tagsEl.innerHTML = (tags || [])
           .map((t) => `<li class="tag__name">${t}</li>`)
@@ -1350,6 +1463,7 @@ I’m a 4th-year BSIT student at the National University – MOA, specializing i
         openModal({
           title: btn.getAttribute('data-project-title'),
           img: btn.getAttribute('data-project-img'),
+          imgMobile: btn.getAttribute('data-project-img-mobile'),
           url: btn.getAttribute('data-project-url'),
           desc: btn.getAttribute('data-project-desc'),
           tags: (btn.getAttribute('data-project-tags') || '')
@@ -1359,6 +1473,9 @@ I’m a 4th-year BSIT student at the National University – MOA, specializing i
         });
       });
     });
+
+    viewDesktopBtn?.addEventListener('click', () => setActiveView('desktop'));
+    viewMobileBtn?.addEventListener('click', () => setActiveView('mobile'));
 
     document.querySelectorAll('.project-card').forEach((card) => {
       card.addEventListener('click', (e) => {
