@@ -216,7 +216,8 @@
 </div>
 
 <p class="profile__blurb" id="profileBlurb">
-I’m a 4th-year BSIT student at the National University – MOA, specializing in Web and Mobile Application Development. I chose BSIT because I’ve always been curious about how technology works and how it can be used to build useful, real-world solutions. I lean toward full stack development because while I'm comfortable with both frontend and backend, I'm more drawn to logic and problem-solving than designing UIs. I enjoy figuring out how things work behind the scenes and making sure everything runs smoothly. I’m looking to grow professionally as either a Developer or a Software QA Engineer, and I can automate testing using tools like Playwright, Cypress, and Jam.dev.
+I am a graduating BS Information Technology student at National University – MOA, specializing in Web and Mobile Application Development. I chose BSIT because of my strong curiosity about how technology works and how it can be used to build practical, real-world solutions. I have experience in both frontend and backend development, but I am more focused on logic, system design, and problem-solving rather than UI design.
+I also have experience in software quality assurance, including manual and automated testing, API testing, and test case creation. I use tools such as Playwright, Cypress, Postman, and Jam.dev for testing and bug reporting. I am currently seeking opportunities to grow as a Developer or Software QA Engineer, where I can continue improving my technical skills and contribute to building reliable and efficient systems.
 </p>
 
           <!-- <p class="profile__blurb">
@@ -395,7 +396,7 @@ I’m a 4th-year BSIT student at the National University – MOA, specializing i
                       <div class="exp-card__avatar" aria-hidden="true">K</div>
                       <div class="exp-card__head">
                         <div class="exp-card__title-row">
-                          <h3 class="exp-card__title">Software QA Engineer Intern</h3>
+                          <h3 class="exp-card__title">QA Engineer Intern</h3>
                           <!-- <span class="exp-badge exp-badge--active">
                             <span class="exp-badge__dot" aria-hidden="true"></span>
                             Active
@@ -1076,7 +1077,7 @@ I’m a 4th-year BSIT student at the National University – MOA, specializing i
               data-project-img="./assets/git.png"
               data-project-img-mobile="./assets/git.png"
               data-project-url=""
-              data-project-desc="Vehicle-focused project (details coming soon)."
+              data-project-desc="Vehicle-focused project — currently still in progress."
               data-project-tags="Web, Services, UI"
             >
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
@@ -1153,12 +1154,15 @@ I’m a 4th-year BSIT student at the National University – MOA, specializing i
                 <button type="button" class="project-modal__view-btn" id="projectModalViewMobile">Mobile</button>
               </div>
             </div>
-            <img
-              id="projectModalImage"
-              class="project-modal__image"
-              src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw=="
-              alt="Project preview image"
-            />
+            <button type="button" class="project-modal__image-btn" id="projectModalImageBtn" aria-label="Zoom project preview">
+              <img
+                id="projectModalImage"
+                class="project-modal__image"
+                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw=="
+                alt="Project preview image"
+              />
+            </button>
+            <p class="project-modal__zoom-hint">Click the preview to zoom in</p>
           </div>
           <div class="project-modal__meta">
             <div class="project-modal__tags-card">
@@ -1174,6 +1178,13 @@ I’m a 4th-year BSIT student at the National University – MOA, specializing i
           </div>
         </div>
       </div>
+    </div>
+
+    <div id="projectImageLightbox" class="project-lightbox" aria-hidden="true">
+      <button type="button" class="project-lightbox__close" id="projectLightboxClose" aria-label="Close zoomed preview">×</button>
+      <button type="button" class="project-lightbox__nav project-lightbox__nav--prev" id="projectLightboxPrev" aria-label="Previous image" hidden>‹</button>
+      <img id="projectLightboxImage" class="project-lightbox__image" src="" alt="Zoomed project preview" />
+      <button type="button" class="project-lightbox__nav project-lightbox__nav--next" id="projectLightboxNext" aria-label="Next image" hidden>›</button>
     </div>
 
     <section class="contact" id="contact">
@@ -1371,7 +1382,13 @@ I’m a 4th-year BSIT student at the National University – MOA, specializing i
 
     const closeBtn = document.getElementById('projectModalClose');
     const titleEl = document.getElementById('projectModalTitle');
+    const imgBtn = document.getElementById('projectModalImageBtn');
     const imgEl = document.getElementById('projectModalImage');
+    const lightbox = document.getElementById('projectImageLightbox');
+    const lightboxImg = document.getElementById('projectLightboxImage');
+    const lightboxClose = document.getElementById('projectLightboxClose');
+    const lightboxPrev = document.getElementById('projectLightboxPrev');
+    const lightboxNext = document.getElementById('projectLightboxNext');
     const viewToggleEl = document.getElementById('projectModalViewToggle');
     const viewDesktopBtn = document.getElementById('projectModalViewDesktop');
     const viewMobileBtn = document.getElementById('projectModalViewMobile');
@@ -1453,7 +1470,56 @@ I’m a 4th-year BSIT student at the National University – MOA, specializing i
       modal.setAttribute('aria-hidden', 'false');
     };
 
+    const isMobileView = () => viewMobileBtn?.classList.contains('is-active');
+
+    const getLightboxImages = () => {
+      if (isMobileView() && currentMobileImgs.length) return [...currentMobileImgs];
+      if (currentDesktopImg) return [currentDesktopImg];
+      return [];
+    };
+
+    const getCurrentImageSrc = () => {
+      const images = getLightboxImages();
+      if (!images.length) return '';
+      if (isMobileView() && currentMobileImgs.length) {
+        return images[mobileImgIndex] || images[0];
+      }
+      return images[0];
+    };
+
+    const updateLightboxNav = () => {
+      const images = getLightboxImages();
+      const showNav = isMobileView() && images.length > 1;
+      if (lightboxPrev) lightboxPrev.hidden = !showNav;
+      if (lightboxNext) lightboxNext.hidden = !showNav;
+    };
+
+    const showLightboxImage = (index) => {
+      const images = getLightboxImages();
+      if (!images.length || !lightboxImg) return;
+      mobileImgIndex = ((index % images.length) + images.length) % images.length;
+      lightboxImg.src = images[mobileImgIndex];
+      if (isMobileView() && imgEl) imgEl.src = images[mobileImgIndex];
+    };
+
+    const closeLightbox = () => {
+      if (!lightbox) return;
+      lightbox.classList.remove('open');
+      lightbox.setAttribute('aria-hidden', 'true');
+      if (lightboxImg) lightboxImg.src = '';
+    };
+
+    const openLightbox = () => {
+      const src = getCurrentImageSrc();
+      if (!lightbox || !lightboxImg || !src || src === placeholderImg) return;
+      showLightboxImage(mobileImgIndex);
+      updateLightboxNav();
+      lightbox.classList.add('open');
+      lightbox.setAttribute('aria-hidden', 'false');
+    };
+
     const closeModal = () => {
+      closeLightbox();
       modal.classList.remove('open');
       modal.setAttribute('aria-hidden', 'true');
     };
@@ -1477,13 +1543,37 @@ I’m a 4th-year BSIT student at the National University – MOA, specializing i
       });
     });
 
-    viewDesktopBtn?.addEventListener('click', () => setActiveView('desktop'));
-    viewMobileBtn?.addEventListener('click', () => setActiveView('mobile'));
+    viewDesktopBtn?.addEventListener('click', () => {
+      setActiveView('desktop');
+      if (lightbox?.classList.contains('open')) {
+        showLightboxImage(0);
+        updateLightboxNav();
+      }
+    });
+    viewMobileBtn?.addEventListener('click', () => {
+      setActiveView('mobile');
+      if (lightbox?.classList.contains('open')) {
+        showLightboxImage(mobileImgIndex);
+        updateLightboxNav();
+      }
+    });
 
-    imgEl?.addEventListener('click', () => {
-      if (!viewMobileBtn?.classList.contains('is-active') || currentMobileImgs.length <= 1) return;
-      mobileImgIndex = (mobileImgIndex + 1) % currentMobileImgs.length;
-      imgEl.src = currentMobileImgs[mobileImgIndex];
+    imgBtn?.addEventListener('click', (e) => {
+      e.stopPropagation();
+      openLightbox();
+    });
+
+    lightboxClose?.addEventListener('click', closeLightbox);
+    lightbox?.addEventListener('click', (e) => {
+      if (e.target === lightbox) closeLightbox();
+    });
+    lightboxPrev?.addEventListener('click', (e) => {
+      e.stopPropagation();
+      showLightboxImage(mobileImgIndex - 1);
+    });
+    lightboxNext?.addEventListener('click', (e) => {
+      e.stopPropagation();
+      showLightboxImage(mobileImgIndex + 1);
     });
 
     document.querySelectorAll('.project-card').forEach((card) => {
@@ -1501,7 +1591,12 @@ I’m a 4th-year BSIT student at the National University – MOA, specializing i
     });
 
     document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && modal.classList.contains('open')) closeModal();
+      if (e.key !== 'Escape') return;
+      if (lightbox?.classList.contains('open')) {
+        closeLightbox();
+        return;
+      }
+      if (modal.classList.contains('open')) closeModal();
     });
   })();
 </script>
