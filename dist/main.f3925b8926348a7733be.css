@@ -2074,7 +2074,7 @@ body {
   border-radius: 10px;
   transition: transform 0.3s ease, z-index 0.3s;
   box-shadow: 1px 1px 5px #0005;
-  cursor: pointer;
+  cursor: zoom-in;
   z-index: 1;
 }
 
@@ -2969,14 +2969,35 @@ body {
   display: flex;
 }
 
-.project-lightbox__image {
+.project-lightbox__stage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
   max-width: min(96vw, 1400px);
   max-height: 92vh;
+}
+
+.project-lightbox__image {
+  max-width: min(96vw, 1400px);
+  max-height: calc(92vh - 80px);
   width: auto;
   height: auto;
   object-fit: contain;
   border-radius: 12px;
   box-shadow: 0 24px 80px rgba(0, 0, 0, 0.55);
+}
+
+.project-lightbox__caption {
+  margin: 0;
+  max-width: min(96vw, 900px);
+  padding: 10px 16px;
+  text-align: center;
+  font-size: 15px;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
 }
 
 .project-lightbox__close {

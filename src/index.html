@@ -1183,7 +1183,10 @@ I also have experience in software quality assurance, including manual and autom
     <div id="projectImageLightbox" class="project-lightbox" aria-hidden="true">
       <button type="button" class="project-lightbox__close" id="projectLightboxClose" aria-label="Close zoomed preview">×</button>
       <button type="button" class="project-lightbox__nav project-lightbox__nav--prev" id="projectLightboxPrev" aria-label="Previous image" hidden>‹</button>
-      <img id="projectLightboxImage" class="project-lightbox__image" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" alt="Zoomed project preview" />
+      <div class="project-lightbox__stage">
+        <img id="projectLightboxImage" class="project-lightbox__image" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" alt="Zoomed preview" />
+        <p id="projectLightboxCaption" class="project-lightbox__caption" hidden></p>
+      </div>
       <button type="button" class="project-lightbox__nav project-lightbox__nav--next" id="projectLightboxNext" aria-label="Next image" hidden>›</button>
     </div>
 
@@ -1389,6 +1392,7 @@ I also have experience in software quality assurance, including manual and autom
     const lightboxClose = document.getElementById('projectLightboxClose');
     const lightboxPrev = document.getElementById('projectLightboxPrev');
     const lightboxNext = document.getElementById('projectLightboxNext');
+    const lightboxCaption = document.getElementById('projectLightboxCaption');
     const viewToggleEl = document.getElementById('projectModalViewToggle');
     const viewDesktopBtn = document.getElementById('projectModalViewDesktop');
     const viewMobileBtn = document.getElementById('projectModalViewMobile');
@@ -1410,6 +1414,10 @@ I also have experience in software quality assurance, including manual and autom
     let currentDesktopImg = '';
     let currentMobileImgs = [];
     let mobileImgIndex = 0;
+    let lightboxMode = 'project';
+    let lightboxGallery = [];
+    let lightboxCaptions = [];
+    let lightboxIndex = 0;
 
     const parseImgList = (raw) =>
       (raw || '')
@@ -1472,14 +1480,14 @@ I also have experience in software quality assurance, including manual and autom
 
     const isMobileView = () => viewMobileBtn?.classList.contains('is-active');
 
-    const getLightboxImages = () => {
+    const getProjectLightboxImages = () => {
       if (isMobileView() && currentMobileImgs.length) return [...currentMobileImgs];
       if (currentDesktopImg) return [currentDesktopImg];
       return [];
     };
 
     const getCurrentImageSrc = () => {
-      const images = getLightboxImages();
+      const images = getProjectLightboxImages();
       if (!images.length) return '';
       if (isMobileView() && currentMobileImgs.length) {
         return images[mobileImgIndex] || images[0];
@@ -1488,18 +1496,31 @@ I also have experience in software quality assurance, including manual and autom
     };
 
     const updateLightboxNav = () => {
-      const images = getLightboxImages();
-      const showNav = isMobileView() && images.length > 1;
+      const showNav = lightboxGallery.length > 1;
       if (lightboxPrev) lightboxPrev.hidden = !showNav;
       if (lightboxNext) lightboxNext.hidden = !showNav;
     };
 
-    const showLightboxImage = (index) => {
-      const images = getLightboxImages();
-      if (!images.length || !lightboxImg) return;
-      mobileImgIndex = ((index % images.length) + images.length) % images.length;
-      lightboxImg.src = images[mobileImgIndex];
-      if (isMobileView() && imgEl) imgEl.src = images[mobileImgIndex];
+    const setLightboxSlide = (index) => {
+      if (!lightboxGallery.length || !lightboxImg) return;
+      lightboxIndex = ((index % lightboxGallery.length) + lightboxGallery.length) % lightboxGallery.length;
+      lightboxImg.src = lightboxGallery[lightboxIndex];
+
+      const caption = lightboxCaptions[lightboxIndex];
+      if (lightboxCaption) {
+        if (caption && lightboxMode === 'about') {
+          lightboxCaption.innerHTML = caption.replace(/\\n/g, '<br>');
+          lightboxCaption.hidden = false;
+        } else {
+          lightboxCaption.innerHTML = '';
+          lightboxCaption.hidden = true;
+        }
+      }
+
+      if (lightboxMode === 'project' && isMobileView() && imgEl) {
+        mobileImgIndex = lightboxIndex;
+        imgEl.src = lightboxGallery[lightboxIndex];
+      }
     };
 
     const closeLightbox = () => {
@@ -1507,12 +1528,36 @@ I also have experience in software quality assurance, including manual and autom
       lightbox.classList.remove('open');
       lightbox.setAttribute('aria-hidden', 'true');
       if (lightboxImg) lightboxImg.src = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==';
+      if (lightboxCaption) {
+        lightboxCaption.innerHTML = '';
+        lightboxCaption.hidden = true;
+      }
+      lightboxGallery = [];
+      lightboxCaptions = [];
     };
 
     const openLightbox = () => {
       const src = getCurrentImageSrc();
       if (!lightbox || !lightboxImg || !src || src === placeholderImg) return;
-      showLightboxImage(mobileImgIndex);
+      lightboxMode = 'project';
+      lightboxGallery = getProjectLightboxImages();
+      lightboxCaptions = [];
+      setLightboxSlide(isMobileView() ? mobileImgIndex : 0);
+      updateLightboxNav();
+      lightbox.classList.add('open');
+      lightbox.setAttribute('aria-hidden', 'false');
+    };
+
+    const openAboutLightbox = (startIndex) => {
+      const aboutImgs = document.querySelectorAll('.profile__picture.image-grid img');
+      if (!lightbox || !lightboxImg || !aboutImgs.length) return;
+
+      lightboxMode = 'about';
+      lightboxGallery = [...aboutImgs].map((img) => img.getAttribute('src')).filter(Boolean);
+      lightboxCaptions = [...aboutImgs].map((img) => img.getAttribute('data-text') || '');
+      if (!lightboxGallery.length) return;
+
+      setLightboxSlide(startIndex);
       updateLightboxNav();
       lightbox.classList.add('open');
       lightbox.setAttribute('aria-hidden', 'false');
@@ -1545,15 +1590,17 @@ I also have experience in software quality assurance, including manual and autom
 
     viewDesktopBtn?.addEventListener('click', () => {
       setActiveView('desktop');
-      if (lightbox?.classList.contains('open')) {
-        showLightboxImage(0);
+      if (lightbox?.classList.contains('open') && lightboxMode === 'project') {
+        lightboxGallery = getProjectLightboxImages();
+        setLightboxSlide(0);
         updateLightboxNav();
       }
     });
     viewMobileBtn?.addEventListener('click', () => {
       setActiveView('mobile');
-      if (lightbox?.classList.contains('open')) {
-        showLightboxImage(mobileImgIndex);
+      if (lightbox?.classList.contains('open') && lightboxMode === 'project') {
+        lightboxGallery = getProjectLightboxImages();
+        setLightboxSlide(mobileImgIndex);
         updateLightboxNav();
       }
     });
@@ -1569,11 +1616,15 @@ I also have experience in software quality assurance, including manual and autom
     });
     lightboxPrev?.addEventListener('click', (e) => {
       e.stopPropagation();
-      showLightboxImage(mobileImgIndex - 1);
+      setLightboxSlide(lightboxIndex - 1);
     });
     lightboxNext?.addEventListener('click', (e) => {
       e.stopPropagation();
-      showLightboxImage(mobileImgIndex + 1);
+      setLightboxSlide(lightboxIndex + 1);
+    });
+
+    document.querySelectorAll('.profile__picture.image-grid img').forEach((img, index) => {
+      img.addEventListener('click', () => openAboutLightbox(index));
     });
 
     document.querySelectorAll('.project-card').forEach((card) => {
