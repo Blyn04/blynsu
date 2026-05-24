@@ -853,6 +853,10 @@ I also have experience in software quality assurance, including manual and autom
           <div class="card__img" aria-hidden="true">
             <img src="./assets/jpcs-attendance.png" alt="" />
           </div>
+          <div class="card__mobile-previews" hidden aria-hidden="true">
+            <img src="./assets/jpcs-attendance-1.png" alt="" />
+            <img src="./assets/jpcs-attendance-2.png" alt="" />
+          </div>
           <div class="card__subtitle">Event Attendance</div>
           <div class="card__wrapper">
             <div class="card__title">JPCS</div>
@@ -862,7 +866,6 @@ I also have experience in software quality assurance, including manual and autom
               aria-label="Open project details for JPCS Event Attendance Tracker"
               data-project-title="JPCS Event Attendance Tracker"
               data-project-img="./assets/jpcs-attendance.png"
-              data-project-img-mobile="./assets/jpcs-attendance-1.png,./assets/jpcs-attendance-2.png"
               data-project-url="https://jpcs-events.vercel.app"
               data-project-desc="Smart event tool with auto registration, QR email delivery, and real-time attendance tracking."
               data-project-tags="react.js, react native for mobile, web, mobile, attendance tracker, school event analytics"
@@ -1419,11 +1422,13 @@ I also have experience in software quality assurance, including manual and autom
     let lightboxCaptions = [];
     let lightboxIndex = 0;
 
-    const parseImgList = (raw) =>
-      (raw || '')
+    const parseImgList = (raw) => {
+      if (Array.isArray(raw)) return raw.filter(Boolean);
+      return (raw || '')
         .split(',')
         .map((s) => s.trim())
         .filter(Boolean);
+    };
 
     const setActiveView = (view) => {
       const hasMobile = currentMobileImgs.length > 0;
@@ -1450,7 +1455,7 @@ I also have experience in software quality assurance, including manual and autom
       if (descEl) descEl.textContent = desc || '';
 
       currentDesktopImg = img || '';
-      currentMobileImgs = parseImgList(imgMobile);
+      currentMobileImgs = parseImgList(imgMobile || '');
       mobileImgIndex = 0;
       setActiveView('desktop');
 
@@ -1569,15 +1574,29 @@ I also have experience in software quality assurance, including manual and autom
       modal.setAttribute('aria-hidden', 'true');
     };
 
+    const getProjectCard = (btn) => btn.closest('.project-card, .card');
+
+    const getMobilePreviewSrcs = (btn) => {
+      const card = getProjectCard(btn);
+      const previewImgs = card?.querySelectorAll('.card__mobile-previews img');
+      if (previewImgs?.length) {
+        return [...previewImgs].map((img) => img.getAttribute('src')).filter(Boolean);
+      }
+      return parseImgList(btn.getAttribute('data-project-img-mobile'));
+    };
+
     document.querySelectorAll('.card__arrow').forEach((btn) => {
       btn.addEventListener('click', (e) => {
         e.preventDefault();
         e.stopPropagation();
 
+        const card = getProjectCard(btn);
+        const thumbSrc = card?.querySelector('.card__img img')?.getAttribute('src');
+
         openModal({
           title: btn.getAttribute('data-project-title'),
-          img: btn.getAttribute('data-project-img'),
-          imgMobile: btn.getAttribute('data-project-img-mobile'),
+          img: thumbSrc || btn.getAttribute('data-project-img'),
+          imgMobile: getMobilePreviewSrcs(btn).join(','),
           url: btn.getAttribute('data-project-url'),
           desc: btn.getAttribute('data-project-desc'),
           tags: (btn.getAttribute('data-project-tags') || '')

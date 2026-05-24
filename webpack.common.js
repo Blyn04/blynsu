@@ -12,7 +12,26 @@ module.exports = {
     rules: [
       {
         test: /\.html$/,
-        use: ['html-loader'],
+        use: {
+          loader: 'html-loader',
+          options: {
+            attributes: {
+              list: [
+                '...',
+                {
+                  tag: 'button',
+                  attribute: 'data-project-img',
+                  type: 'src',
+                },
+                {
+                  tag: 'button',
+                  attribute: 'data-project-img-mobile',
+                  type: 'src',
+                },
+              ],
+            },
+          },
+        },
       },
       {
         test: /\.(svg|png|jpg|jpeg|gif)$/i,
