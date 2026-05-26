@@ -154,8 +154,28 @@ button {
   width: 90%;
   line-height: 1.7;
   margin: 120px auto 0;
-  transition: margin-top 0.4s ease;
+  transition: margin-top 0.4s ease, text-align 0.2s ease;
   text-align: justify;
+}
+
+.profile__blurb.is-caption-hovered--top {
+  margin-top: 150px;
+  text-align: center;
+}
+
+.profile__blurb.is-caption-hovered--bottom {
+  margin-top: 250px;
+  text-align: center;
+}
+
+@media (min-width: 1301px) {
+  .about__content .profile__blurb.is-caption-hovered--top {
+    margin-top: 150px;
+  }
+
+  .about__content .profile__blurb.is-caption-hovered--bottom {
+    margin-top: 250px;
+  }
 }
 
 /* —— Experience section —— */

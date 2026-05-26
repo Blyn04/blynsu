@@ -1350,20 +1350,33 @@ I also have experience in software quality assurance, including manual and autom
 
     const resetBlurb = () => {
       blurb.innerHTML = defaultHtml;
-      blurb.style.removeProperty("margin-top");
-      blurb.style.removeProperty("text-align");
+      blurb.classList.remove(
+        "is-caption-hovered--top",
+        "is-caption-hovered--bottom"
+      );
     };
 
-    images.forEach((img) => {
-      img.addEventListener("mouseenter", () => {
-        const newText = img.getAttribute("data-text");
-        if (newText) {
-          blurb.innerHTML = newText.replace(/\\n/g, "<br>");
-          blurb.style.textAlign = "center";
-        }
-      });
+    const applyHover = (img, index) => {
+      const newText = img.getAttribute("data-text");
+      if (newText) {
+        blurb.innerHTML = newText.replace(/\\n/g, "<br>");
+      }
+      blurb.classList.remove(
+        "is-caption-hovered--top",
+        "is-caption-hovered--bottom"
+      );
+      blurb.classList.add(
+        index >= 5 ? "is-caption-hovered--bottom" : "is-caption-hovered--top"
+      );
+    };
 
-      img.addEventListener("mouseleave", resetBlurb);
+    images.forEach((img, index) => {
+      img.addEventListener("mouseenter", () => applyHover(img, index));
+
+      img.addEventListener("mouseleave", (e) => {
+        if (e.relatedTarget && grid.contains(e.relatedTarget)) return;
+        resetBlurb();
+      });
     });
 
     grid.addEventListener("mouseleave", (e) => {
