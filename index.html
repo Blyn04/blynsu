@@ -238,7 +238,7 @@ I also have experience in software quality assurance, including manual and autom
             <h2 class="about__heading1 section-heading1">Tech Skills</h2>
           </div>
           
-          <div class="skills__row">
+          <div class="skills__grid">
             <div class="skills__item skills__item--html">
               <img src="./src/assets/html.png" alt="" />
               <div class="skills__item-name">HTML</div>
@@ -263,14 +263,12 @@ I also have experience in software quality assurance, including manual and autom
               <img src="./src/assets/flutter.png" alt="" />
               <div class="skills__item-name">FLUTTER</div>
             </div>
-            
+
             <div class="skills__item skills__item--playwright skills__item--text-only">
               <img src="./src/assets/pw.png" alt="" />
               <div class="skills__item-name">PLAYWRIGHT</div>
             </div>
-          </div>
 
-          <div class="skills__row">
             <div class="skills__item skills__item--js">
               <img src="./src/assets/js.png" alt="" />
               <div class="skills__item-name">JAVASCRIPT</div>
@@ -305,9 +303,7 @@ I also have experience in software quality assurance, including manual and autom
               <img src="./src/assets/cy.png" alt="" />
               <div class="skills__item-name">CYPRESS</div>
             </div>
-          </div>
 
-          <div class="skills__row">
             <div class="skills__item skills__item--sass">
               <img src="./src/assets/firebase.png" alt="" />
               <div class="skills__item-name">FIREBASE</div>
@@ -336,6 +332,21 @@ I also have experience in software quality assurance, including manual and autom
             <div class="skills__item skills__item--supabase skills__item--text-only">
               <img src="./src/assets/supa.png" alt="" />
               <div class="skills__item-name">SUPABASE</div>
+            </div>
+
+            <div class="skills__item skills__item--vue">
+              <img src="./src/assets/vue.png" alt="" />
+              <div class="skills__item-name">VUE.JS</div>
+            </div>
+
+            <div class="skills__item skills__item--tailwind">
+              <img src="./src/assets/tailwind.png" alt="" />
+              <div class="skills__item-name">TAILWIND</div>
+            </div>
+
+            <div class="skills__item skills__item--sqlite">
+              <img src="./src/assets/sqlite.png" alt="" />
+              <div class="skills__item-name">SQLITE</div>
             </div>
           </div>
           
@@ -1003,7 +1014,7 @@ I also have experience in software quality assurance, including manual and autom
               data-project-title="GitGitAw"
               data-project-img="./src/assets/gitgitaw.png"
               data-project-img-mobile="./src/assets/gitgitaw-mobile.png"
-              data-project-url=""
+              data-project-url="https://gitgitaw.vercel.app/"
               data-project-desc="Project focused on Git workflows, collaboration, and practical version-control skills for team-based development."
               data-project-tags="web, collaboration, git, guide, capacitor, vite, react.js"
             >
@@ -1028,7 +1039,7 @@ I also have experience in software quality assurance, including manual and autom
               data-project-title="SagradaGo"
               data-project-img="./src/assets/sagradago.png"
               data-project-img-mobile="./src/assets/sagradago-mobile.png"
-              data-project-url=""
+              data-project-url="https://sagradago.com/"
               data-project-desc="Sagrada-inspired digital board game experience: strategy, pattern building, and polished gameplay."
               data-project-tags="web, mobile, booking, church, react.js, react native, reservation, analytics"
             >
@@ -1043,7 +1054,7 @@ I also have experience in software quality assurance, including manual and autom
           <div class="card__img" aria-hidden="true">
             <img src="./src/assets/git.png" alt="" />
           </div>
-          <div class="card__subtitle">Vehicle Services</div>
+          <div class="card__subtitle">Mobile · Vehicle Services</div>
           <div class="card__wrapper">
             <div class="card__title">Vehix</div>
             <button
@@ -1051,11 +1062,11 @@ I also have experience in software quality assurance, including manual and autom
               class="card__arrow card__icon"
               aria-label="Open project details for Vehix"
               data-project-title="Vehix"
-              data-project-img="./src/assets/git.png"
               data-project-img-mobile="./src/assets/git.png"
+              data-project-mobile-only="true"
               data-project-url=""
-              data-project-desc="Vehicle-focused project — currently still in progress."
-              data-project-tags="Web, Services, UI"
+              data-project-desc="Vehicle-focused mobile app — currently still in progress."
+              data-project-tags="mobile, react native, vehicle services, ui"
             >
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
                 <use href="#project-card-icon"></use>
@@ -1329,32 +1340,38 @@ I also have experience in software quality assurance, including manual and autom
 </script> -->
 
 <script>
-  const blurb = document.getElementById("profileBlurb") || document.querySelector(".profile__blurb");
-  const defaultText = blurb.innerHTML; 
-  const images = document.querySelectorAll(".profile__picture img");
+  (function () {
+    const blurb = document.getElementById("profileBlurb") || document.querySelector(".profile__blurb");
+    const grid = document.querySelector(".profile__picture.image-grid");
+    if (!blurb || !grid) return;
 
-  images.forEach((img, index) => {
-    img.addEventListener("mouseenter", () => {
-      // Replace \n with <br> for multi-line display
-      const newText = img.getAttribute("data-text");
-      if (newText) {
-        const formattedText = newText.replace(/\\n/g, "<br>");
-        blurb.innerHTML = formattedText;
-      }
+    const defaultHtml = blurb.innerHTML;
+    const images = grid.querySelectorAll("img");
 
-      // Adjust margin-top based on image index (0-based)
-      if (index >= 5) {
-        blurb.style.marginTop = "250px"; // img6–10
-      } else {
-        blurb.style.marginTop = "150px"; // img1–5
-      }
+    const resetBlurb = () => {
+      blurb.innerHTML = defaultHtml;
+      blurb.style.removeProperty("margin-top");
+      blurb.style.removeProperty("text-align");
+    };
+
+    images.forEach((img) => {
+      img.addEventListener("mouseenter", () => {
+        const newText = img.getAttribute("data-text");
+        if (newText) {
+          blurb.innerHTML = newText.replace(/\\n/g, "<br>");
+          blurb.style.textAlign = "center";
+        }
+      });
+
+      img.addEventListener("mouseleave", resetBlurb);
     });
 
-    img.addEventListener("mouseleave", () => {
-      blurb.innerHTML = defaultText;
-      blurb.style.marginTop = "140px"; // Reset to default
+    grid.addEventListener("mouseleave", (e) => {
+      if (!grid.contains(e.relatedTarget)) {
+        resetBlurb();
+      }
     });
-  });
+  })();
 </script>
 
 <script>
@@ -1409,6 +1426,7 @@ I also have experience in software quality assurance, including manual and autom
 
     let currentDesktopImg = '';
     let currentMobileImgs = [];
+    let currentMobileOnly = false;
     let mobileImgIndex = 0;
     let lightboxMode = 'project';
     let lightboxGallery = [];
@@ -1423,14 +1441,18 @@ I also have experience in software quality assurance, including manual and autom
 
     const setActiveView = (view) => {
       const hasMobile = currentMobileImgs.length > 0;
+      const showToggle = hasMobile && !currentMobileOnly;
 
       if (viewToggleEl) {
-        viewToggleEl.style.display = hasMobile ? 'inline-flex' : 'none';
+        viewToggleEl.style.display = showToggle ? 'inline-flex' : 'none';
       }
 
       if (!imgEl) return;
 
-      if (view === 'mobile' && hasMobile) {
+      const useMobile =
+        hasMobile && (currentMobileOnly || (view === 'mobile' && !currentMobileOnly));
+
+      if (useMobile) {
         imgEl.src = currentMobileImgs[mobileImgIndex] || currentMobileImgs[0];
         viewMobileBtn?.classList.add('is-active');
         viewDesktopBtn?.classList.remove('is-active');
@@ -1441,14 +1463,15 @@ I also have experience in software quality assurance, including manual and autom
       }
     };
 
-    const openModal = ({ title, img, imgMobile, url, desc, tags }) => {
+    const openModal = ({ title, img, imgMobile, url, desc, tags, mobileOnly }) => {
       if (titleEl) titleEl.textContent = title || '';
       if (descEl) descEl.textContent = desc || '';
 
-      currentDesktopImg = img || '';
+      currentMobileOnly = Boolean(mobileOnly);
+      currentDesktopImg = currentMobileOnly ? '' : img || '';
       currentMobileImgs = parseImgList(imgMobile);
       mobileImgIndex = 0;
-      setActiveView('desktop');
+      setActiveView(currentMobileOnly ? 'mobile' : 'desktop');
 
       if (imgEl) {
         imgEl.onerror = () => {
@@ -1570,9 +1593,11 @@ I also have experience in software quality assurance, including manual and autom
         e.preventDefault();
         e.stopPropagation();
 
+        const mobileOnly = btn.getAttribute('data-project-mobile-only') === 'true';
+
         openModal({
           title: btn.getAttribute('data-project-title'),
-          img: btn.getAttribute('data-project-img'),
+          img: mobileOnly ? '' : btn.getAttribute('data-project-img'),
           imgMobile: btn.getAttribute('data-project-img-mobile'),
           url: btn.getAttribute('data-project-url'),
           desc: btn.getAttribute('data-project-desc'),
@@ -1580,6 +1605,7 @@ I also have experience in software quality assurance, including manual and autom
             .split(',')
             .map((t) => t.trim())
             .filter(Boolean),
+          mobileOnly,
         });
       });
     });

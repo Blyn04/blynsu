@@ -74,12 +74,39 @@ button {
 .about__content {
   display: flex;
   justify-content: space-between;
+  align-items: flex-start;
+  gap: 2rem;
   width: 100%;
+}
+
+.about__content .skills {
+  flex: 0 0 auto;
+  width: min(100%, 520px);
+  min-width: 0;
+  align-self: flex-start;
+  margin-top: 0;
+  justify-content: flex-start;
+}
+
+@media (min-width: 1301px) {
+  .about__content .skills {
+    margin-top: -4.5rem;
+  }
+
+  .about__content .skills__heading-wrapper {
+    margin-bottom: 0.85rem;
+  }
 }
 
 @media (max-width: 1300px) {
   .about__content {
     flex-direction: column;
+    align-items: center;
+  }
+
+  .about__content .skills {
+    width: min(100%, 640px);
+    margin-top: 0;
   }
 }
 
@@ -510,21 +537,30 @@ button {
   grid-template-columns: repeat(5, 1fr); /* ⬅️ now 5 columns */
   gap: 20px;
   max-width: 1000px;
-  margin: 0 auto;
+  height: auto;
+  margin: 0 auto 2rem;
   padding: 20px;
   justify-items: center;
 }
 
-/* img1–5 */
-.profile:has(.image-grid img:nth-child(-n+5):hover) .profile__blurb {
-  margin-top: 150px;
-  text-align: center;
-}
+@media (min-width: 1301px) {
+  .about__content .profile {
+    flex: 1 1 auto;
+    min-width: 0;
+    max-width: calc(100% - 540px);
+  }
 
-/* img6–10 */
-.profile:has(.image-grid img:nth-child(n+6):hover) .profile__blurb {
-  margin-top: 250px;
-  text-align: center;
+  .about__content .profile__picture.image-grid {
+    max-width: 100%;
+    gap: 12px;
+    padding: 12px;
+  }
+
+  .about__content .profile__blurb {
+    max-width: 100%;
+    margin-top: 2rem;
+    font-size: 1.45rem;
+  }
 }
 
 @media (max-width: 600px) {
@@ -548,20 +584,22 @@ button {
 
 .skills {
   display: flex;
-  justify-content: center;
-  flex-direction: row; /* ← ensure horizontal row layout */
-  margin-top: -45px;
+  justify-content: flex-start;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 0;
   position: relative;
-  flex-wrap: nowrap;
+  width: 100%;
 }
 
-/* ⬇️ Add heading wrapper absolutely positioned at the top */
 .skills__heading-wrapper {
-  position: absolute;
-  top: -60px;
-  left: 48%;
-  transform: translateX(-50%);
+  position: relative;
+  top: auto;
+  left: auto;
+  transform: none;
   text-align: center;
+  width: 100%;
+  margin-bottom: 1.25rem;
 }
 
 .tech-skills-heading {
@@ -570,6 +608,10 @@ button {
   font-weight: bold;
   color: #ffffff;
   display: inline-block;
+}
+
+.about__content .tech-skills-heading {
+  font-size: 2rem;
 }
 
 .tech-skills-heading::after {
@@ -613,26 +655,47 @@ button {
   z-index: 9999;
 }
 
-/* Keep your existing row, item, responsive, and animation styles below */
-.skills__row {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+/* 4 columns in About sidebar; wider layouts use 6 */
+.skills__grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1.1rem 0.65rem;
+  width: 100%;
+  margin: 0 auto;
+  padding-top: 0;
 }
 
-.skills__row:not(:last-child) {
-  margin-right: 25px;
-}
-
-@media (max-width: 410px) {
-  .skills__row:not(:last-child) {
-    margin-right: 15px;
+@media (min-width: 1301px) {
+  .about__content .skills__grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 }
 
-@media (max-width: 300px) {
-  .skills__row:not(:last-child) {
-    margin-right: 10px;
+@media (max-width: 1300px) {
+  .skills__grid {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 1.25rem 0.75rem;
+    max-width: 1085px;
+  }
+}
+
+@media (max-width: 1000px) {
+  .skills__grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    max-width: 640px;
+  }
+}
+
+@media (max-width: 600px) {
+  .skills__grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem 0.5rem;
+  }
+}
+
+@media (max-width: 410px) {
+  .skills__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
@@ -641,11 +704,14 @@ button {
   transform: translateY(20px);
   position: relative;
   display: flex;
+  flex: 0 0 auto;
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
-  height: 100px;
-  width: 160px;
+  height: 88px;
+  width: 100%;
+  max-width: 160px;
+  margin: 0 auto;
   border: double 3px transparent;
   border-image-slice: 1;
   border-width: 3px;
@@ -664,10 +730,26 @@ button {
   transform: translateY(0);
 }
 
+.about__content .skills__item {
+  height: 82px;
+  max-width: none;
+}
+
+.about__content .skills__item img {
+  height: 38px;
+}
+
+.about__content .skills__item-name,
+.about__content .skills__item--text-only .skills__item-name {
+  font-size: 0.72rem;
+  letter-spacing: 0.5px;
+  line-height: 1.1;
+}
+
 @media (max-width: 1500px) {
   .skills__item {
     height: 90px;
-    width: 145px;
+    max-width: 145px;
   }
 }
 
@@ -681,45 +763,35 @@ button {
 @media (max-width: 1000px) {
   .skills__item {
     height: 80px;
-    width: 130px;
+    max-width: 130px;
   }
 }
 
 @media (max-width: 600px) {
   .skills__item {
     height: 70px;
-    width: 115px;
+    max-width: 115px;
   }
 }
 
 @media (max-width: 500px) {
   .skills__item {
     height: 60px;
-    width: 100px;
+    max-width: 100px;
   }
 }
 
 @media (max-width: 410px) {
   .skills__item {
     height: 50px;
-    width: 80px;
+    max-width: 80px;
   }
 }
 
 @media (max-width: 340px) {
   .skills__item {
     height: 45px;
-    width: 70px;
-  }
-}
-
-.skills__item:not(:last-child) {
-  margin-bottom: 3rem;
-}
-
-@media (max-width: 410px) {
-  .skills__item:not(:last-child) {
-    margin-bottom: 15px;
+    max-width: 70px;
   }
 }
 
@@ -747,6 +819,11 @@ button {
   .skills__item-name {
     font-size: 1.4rem;
   }
+
+  .about__content .skills__item-name,
+  .about__content .skills__item--text-only .skills__item-name {
+    font-size: 0.85rem;
+  }
 }
 
 .skills__item--js img {
@@ -770,7 +847,7 @@ button {
 }
 
 .skills__item--text-only .skills__item-name {
-  font-size: 1.4rem;
+  font-size: inherit;
 }
 
 @keyframes moveInLeft {
