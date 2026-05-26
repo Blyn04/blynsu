@@ -154,28 +154,21 @@ button {
   width: 90%;
   line-height: 1.7;
   margin: 120px auto 0;
-  transition: margin-top 0.4s ease, text-align 0.2s ease;
+  transition: transform 0.4s ease, text-align 0.2s ease;
   text-align: justify;
+  transform: translateY(0);
+  will-change: transform;
 }
 
+/* Visual slide only — transform does not shift Experience / sections below */
 .profile__blurb.is-caption-hovered--top {
-  margin-top: 150px;
+  transform: translateY(130px);
   text-align: center;
 }
 
 .profile__blurb.is-caption-hovered--bottom {
-  margin-top: 250px;
+  transform: translateY(230px);
   text-align: center;
-}
-
-@media (min-width: 1301px) {
-  .about__content .profile__blurb.is-caption-hovered--top {
-    margin-top: 150px;
-  }
-
-  .about__content .profile__blurb.is-caption-hovered--bottom {
-    margin-top: 250px;
-  }
 }
 
 /* —— Experience section —— */
