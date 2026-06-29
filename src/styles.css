@@ -81,7 +81,7 @@ button {
 
 .about__content .skills {
   flex: 0 0 auto;
-  width: min(100%, 520px);
+  width: min(100%, 600px);
   min-width: 0;
   align-self: flex-start;
   margin-top: 0;
@@ -560,7 +560,7 @@ button {
   .about__content .profile {
     flex: 1 1 auto;
     min-width: 0;
-    max-width: calc(100% - 540px);
+    max-width: calc(100% - 620px);
   }
 
   .about__content .profile__picture.image-grid {
@@ -668,10 +668,10 @@ button {
   z-index: 9999;
 }
 
-/* 4 columns in About sidebar; wider layouts use 6 */
+/* 5 columns in About sidebar; wider layouts use 5 */
 .skills__grid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(5, minmax(0, 1fr));
   gap: 1.1rem 0.65rem;
   width: 100%;
   margin: 0 auto;
@@ -680,21 +680,21 @@ button {
 
 @media (min-width: 1301px) {
   .about__content .skills__grid {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-columns: repeat(5, minmax(0, 1fr));
   }
 }
 
 @media (max-width: 1300px) {
   .skills__grid {
-    grid-template-columns: repeat(6, minmax(0, 1fr));
+    grid-template-columns: repeat(5, minmax(0, 1fr));
     gap: 1.25rem 0.75rem;
-    max-width: 1085px;
+    max-width: 900px;
   }
 }
 
 @media (max-width: 1000px) {
   .skills__grid {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-columns: repeat(5, minmax(0, 1fr));
     max-width: 640px;
   }
 }
