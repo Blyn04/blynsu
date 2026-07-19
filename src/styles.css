@@ -91,6 +91,8 @@ button {
 @media (min-width: 1301px) {
   .about__content .skills {
     margin-top: -4.5rem;
+    position: relative;
+    left: 40px;
   }
 
   .about__content .skills__heading-wrapper {
